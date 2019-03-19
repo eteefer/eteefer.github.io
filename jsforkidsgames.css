@@ -1,3 +1,26 @@
 body {
-  background-color: lightblue
+  background-color: lightblue;
 }  
+button {
+  
+  float:left; 
+  width:20%;
+}
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  background-color: darkslategray;
+  color: #fff;
+  border: none;
+  border-radius: 0px;
+  
+}
+
+.button:hover {background-color: darkred}
+
+.button:active {
+  background-color: blue;
+}
