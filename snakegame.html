@@ -17,6 +17,7 @@
     <h5>from Chapter 17 of <em>JavaScript for Kids</em>text</h5>
     <br />
     <center><canvas id="canvas" width="400" height="400"></canvas></center>
+    <h5 id="arrowkeys">Use the arrow keys!</h5>
     </div>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
@@ -102,7 +103,12 @@
     Block.prototype.equal = function (otherBlock) {
       return this.col === otherBlock.col && this.row === otherBlock.row;
     };
-
+    //flash arrow key message
+     for (var i=0;i<7;i++) {
+         $("#arrowkeys").fadeOut(1000);
+         $("#arrowkeys").fadeIn(1000);
+     }
+        
     // The Snake constructor
     var Snake = function () {
       this.segments = [
