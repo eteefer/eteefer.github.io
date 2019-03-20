@@ -19,8 +19,8 @@ button {
   
 }
 
-.button:hover {background-color: yellow}
+.button:hover {background-color: lightorange}
 
 .button:active {
-  background-color: green;
+  background-color: lightgreen;
 }
