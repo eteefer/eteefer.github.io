@@ -7,7 +7,7 @@ button {
  
 }
 .button {
-  padding: 15px 25px;
+  padding: 10px 17px;
   font-size: 24px;
   text-align: center;
   cursor: pointer;
@@ -19,7 +19,7 @@ button {
   
 }
 
-.button:hover {background-color: darkred}
+.button:hover {background-color: yellow}
 
 .button:active {
   background-color: green;
