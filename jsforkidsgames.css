@@ -22,5 +22,5 @@ button {
 .button:hover {background-color: goldenrod}
 
 .button:active {
-  background-color: palegreen;
+  background-color: blue;
 }
