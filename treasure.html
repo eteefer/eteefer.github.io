@@ -14,7 +14,7 @@
   <div style="text-align: center">
   <h2 id="heading">Find the Buried Treasure!!!</h2>
   <h5>from Chapter 11 of <em><a href="https://nostarch.com/javascriptforkids">JavaScript for Kids</a></em> text by Nick Morgan</h5>
-  
+  <button id = "startOver">Start Over</button><br />
   <br />
     <center><img id="map" width=400 height=400 src="http://nostarch.com/images/treasuremap.png"></center>
  
@@ -76,12 +76,21 @@
 
       // Update the #distance element with the new hint
       $("#distance").text(distanceHint);
+      var clickMessage = "Click " + clicks;  //coercion
+      $("#numOfClicks").text(clickMessage);  //!!!final click updates after alert
 
       // If the click was close enough, tell them they won
       if (distance < 8) {
         alert("Found the treasure in " + clicks + " clicks!");
       }
     });
+     
+ //NEW!!!Add a click handler to the button element
+	$("#startOver").click(function (event) {
+	   clicks = 0;
+	   $("#distance").text("");
+	   $("#numOfClicks").text("");
+	});
     </script>
     </body>
     </html>
