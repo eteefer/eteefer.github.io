@@ -80,8 +80,9 @@
       var distanceHint = getDistanceHint(distance);
 
       // Update the #distance element with the new hint and click count
-      $("#distance").text(distanceHint);
       var clickMessage = "Click " + clicks;  //coercion
+
+      $("#distance").text(distanceHint + "&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp" + clickMessage);
       $("#numOfClicks").text(clickMessage);  //!!!final click updates after alert
 
       // If the click was close enough, tell them they won
