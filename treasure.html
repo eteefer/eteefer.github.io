@@ -22,7 +22,7 @@
     <center><img id="map" width=400 height=400 src="http://nostarch.com/images/treasuremap.png"></center>
  
     <p id="distance"></p>
-    <!--<p id="numOfClicks"></p>-->
+    <p id="numOfClicks"></p>
   </div>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
 
@@ -79,10 +79,9 @@
       var distanceHint = getDistanceHint(distance);
 
       // Update the #distance element with the new hint and click count
+      $("#distance").text(distanceHint);
       var clickMessage = "Click " + clicks;  //coercion
-      $("#distance").text(distanceHint + "          " + clickMessage);
-      /*var clickMessage = "Click " + clicks;  //coercion
-      $("#numOfClicks").text(clickMessage);  //!!!final click updates after alert*/
+      $("#numOfClicks").text(clickMessage);  //!!!final click updates after alert
 
       // If the click was close enough, tell them they won
       if (distance < 8) {
