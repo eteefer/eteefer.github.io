@@ -78,8 +78,9 @@
       // Convert distance to a hint
       var distanceHint = getDistanceHint(distance);
 
-      // Update the #distance element with the new hint
-      $("#distance").text(distanceHint);
+      // Update the #distance element with the new hint and click count
+      var clickMessage = "Click " + clicks;  //coercion
+      $("#distance").text(distanceHint + "          " + clickMessage);
       /*var clickMessage = "Click " + clicks;  //coercion
       $("#numOfClicks").text(clickMessage);  //!!!final click updates after alert*/
 
