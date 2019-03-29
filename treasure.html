@@ -22,7 +22,7 @@
   <br />
     <center><img id="map" width=400 height=400 src="http://nostarch.com/images/treasuremap.png"></center>
  
-    <h5 id="distance"></h5>
+    <pre id="distance"></pre>
     <h5 id="numOfClicks"></h5>
   </div>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
@@ -82,7 +82,7 @@
       // Update the #distance element with the new hint and click count
       var clickMessage = "Click " + clicks;  //coercion
 
-      $("#distance").text(distanceHint + &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp + clickMessage);
+      $("#distance").text(distanceHint + "          " + clickMessage);
       $("#numOfClicks").text(clickMessage);  //!!!final click updates after alert
 
       // If the click was close enough, tell them they won
