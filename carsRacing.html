@@ -88,7 +88,7 @@
 	                              */
 	
 	var enterName1 = prompt("Enter Player One's Name: ");
-	if (enterName1 === null) {
+	if (enterName1 === null || enterName1 === "") {
 	  enterName1 = "Player 1";
 	  $("#p1N").text(enterName1);
 	} else {
@@ -96,7 +96,7 @@
 	}
 	
 	var enterName2 = prompt("Enter Player Two's Name: ");
-	if (enterName2 === null) {
+	if (enterName2 === null || enterName2 === "") {
 	  enterName2 = "Player 2";
 	  $("#p2N").text(enterName2);
 	} else {
@@ -105,7 +105,7 @@
 
 	
 	var enterName3 = prompt("Enter Player Three's Name: ");
-	if (enterName3 === null) {
+	if (enterName3 === null || enterName3 === "") {
 	  enterName3 = "Player 3";
 	  $("#p3N").text(enterName3);
 	} else {
