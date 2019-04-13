@@ -11,6 +11,9 @@
 <a href="./snakegame.html"><button class="button">Snake Game</button></a>
 <a href="https://www.purposefulprogramming.org" style="float: right; margin:25px"><em>www.purposefulprogramming.org</em></a>
 
+<audio id="Vroom" src = "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-audio-hero/audio_hero_AutoFerrari_DIGID16_35_321.mp3">
+Your browser does not support this audio</audio>
+	
 <br style="clear:both" />
   <div style="text-align: center">
   <h2 id="heading">Cars Racing!!!</h2>
@@ -127,11 +130,14 @@
 	
     var carsStart = function () {
          carsDriving = setInterval(function () {  //do not put keyword var 
-         player1.moveRight(Math.random() * 10);
-         player2.moveRight(Math.random() * 10);
-	     player3.moveRight(Math.random() * 10);
+	 $("#Vroom").get(0).play();
+         player1.moveRight(Math.random() * 7);
+         player2.moveRight(Math.random() * 7);
+	     player3.moveRight(Math.random() * 7);
 		 if (player1.x >= 550 || player2.x >= 550 || player3.x >= 550) {
 		   clearInterval(carsDriving);
+		   $("#Vroom").get(0).pause();
+		   $("#Vroom").get(0).currentTime = 0;
 		   if (player1.x > player2.x && player1.x > player3.x) {
 		     alert(enterName1 + " Wins!!!");
 		   }
@@ -159,8 +165,10 @@
 	$("#goButton").click(carsStart);
 	
 	$("#stopButton").click(function () {
-	                        clearInterval(carsDriving)
-							});
+	                        clearInterval(carsDriving);
+		                $("#Vroom").get(0).pause();
+				$("#Vroom").get(0).currentTime = 0;
+				});
     </script>
 </body>
 </html>
