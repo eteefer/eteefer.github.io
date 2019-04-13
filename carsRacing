@@ -6,11 +6,15 @@
 </head>
 
 <body>
+<a href="./treasure.html"><button class="button">Find the Buried Treasure</button></a>
+<a href="./snakegame.html"><button class="button">Snake Game</button></a>
+<a href="https://www.purposefulprogramming.org" style="float: right; margin:25px"><em>www.purposefulprogramming.org</em></a>
+<br />
 <button id = "goButton">Go</button>
 <button id = "stopButton">Stop</button>
-<p id = "p1N" style = "position: absolute; left: 15px; top: 35px"></p>
-<p id = "p2N" style = "position: absolute; left: 15px; top: 135px"></p>
-<p id = "p3N" style = "position: absolute; left: 15px; top: 235px"></p>
+<p id = "p1N" style = "position: absolute; left: 15px; top: 75px"></p>
+<p id = "p2N" style = "position: absolute; left: 15px; top: 175px"></p>
+<p id = "p3N" style = "position: absolute; left: 15px; top: 275px"></p>
 
 	    
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
