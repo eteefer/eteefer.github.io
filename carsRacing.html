@@ -30,6 +30,7 @@ Your browser does not support this audio</audio>
 	    
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <script>
+$(document).ready(function() {
     var Car = function (x, y) {
       this.x = x;
       this.y = y;
@@ -169,6 +170,7 @@ Your browser does not support this audio</audio>
 		                $("#Vroom").get(0).pause();
 				$("#Vroom").get(0).currentTime = 0;
 				});
+});  //end of document ready
     </script>
 </body>
 </html>
