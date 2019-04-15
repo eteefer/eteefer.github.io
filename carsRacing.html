@@ -98,7 +98,7 @@ $(document).ready(function() {
          player1.moveRight(Math.random() * 7);
          player2.moveRight(Math.random() * 7);
 	     player3.moveRight(Math.random() * 7);
-		 if (player1.x >= 700 || player2.x >= 700 || player3.x >= 700) {
+		 if (player1.x >= 800 || player2.x >= 800 || player3.x >= 800) {
 		   clearInterval(carsDriving);
 		   $("#Vroom").get(0).pause();
 		   $("#Vroom").get(0).currentTime = 0;
