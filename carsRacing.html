@@ -3,31 +3,6 @@
 <head>
     <title>Cars</title>
     <link href="./jsforkidsgames.css" type="text/css" rel="stylesheet"/>    
-</head>
-
-<body>
-<a href="./treasure.html"><button class="button">Find the Buried Treasure</button></a>
-<a href="./carsRacing.html"><button class="button">Cars Racing</button></a>
-<a href="./snakegame.html"><button class="button">Snake Game</button></a>
-<a href="https://www.purposefulprogramming.org" style="float: right; margin:25px"><em>www.purposefulprogramming.org</em></a>
-
-<audio id="Vroom" src = "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-audio-hero/audio_hero_AutoFerrari_DIGID16_35_321.mp3">
-Your browser does not support this audio</audio>
-	
-<br style="clear:both" />
-  <div style="text-align: center">
-  <h2 id="heading">Cars Racing!!!</h2>
-  <h5>adapted from Chapter 12 of <em><a href="https://nostarch.com/javascriptforkids">JavaScript for Kids</a></em> text by Nick Morgan</h5>
-  <br />
-  </div>
-  <button id = "goButton">Go</button>
-  <button id = "stopButton">Stop</button>
-	
-<p id = "p1N" style = "position: absolute; left: 15px; top: 250px"></p>
-<p id = "p2N" style = "position: absolute; left: 15px; top: 350px"></p>
-<p id = "p3N" style = "position: absolute; left: 15px; top: 450px"></p>
-
-	    
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <script>
 $(document).ready(function() {
@@ -69,23 +44,7 @@ $(document).ready(function() {
       });
     };
 
-    Car.prototype.moveUp = function (distance) {
-      this.y -= distance;
-
-      this.carElement.css({
-        left: this.x,
-        top: this.y
-      });
-    };
-
-    Car.prototype.moveDown = function (distance) {
-      this.y += distance;
-
-      this.carElement.css({
-        left: this.x,
-        top: this.y
-      });
-    };
+    
 
 	/*
 	  This is where we'll add code
@@ -172,5 +131,31 @@ $(document).ready(function() {
 				});
 });  //end of document ready
     </script>
+</head>
+
+<body>
+<a href="./treasure.html"><button class="button">Find the Buried Treasure</button></a>
+<a href="./carsRacing.html"><button class="button">Cars Racing</button></a>
+<a href="./snakegame.html"><button class="button">Snake Game</button></a>
+<a href="https://www.purposefulprogramming.org" style="float: right; margin:25px"><em>www.purposefulprogramming.org</em></a>
+
+<audio id="Vroom" src = "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-audio-hero/audio_hero_AutoFerrari_DIGID16_35_321.mp3">
+Your browser does not support this audio</audio>
+	
+<br style="clear:both" />
+  <div style="text-align: center">
+  <h2 id="heading">Cars Racing!!!</h2>
+  <h5>adapted from Chapter 12 of <em><a href="https://nostarch.com/javascriptforkids">JavaScript for Kids</a></em> text by Nick Morgan</h5>
+  <br />
+  </div>
+  <button id = "goButton">Go</button>
+  <button id = "stopButton">Stop</button>
+	
+<p id = "p1N" style = "position: absolute; left: 15px; top: 250px"></p>
+<p id = "p2N" style = "position: absolute; left: 15px; top: 350px"></p>
+<p id = "p3N" style = "position: absolute; left: 15px; top: 450px"></p>
+
+	    
+    
 </body>
 </html>
