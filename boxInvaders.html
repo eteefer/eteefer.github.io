@@ -224,14 +224,34 @@ var intervalId = setInterval(function () {
 	}
   };
   
+  // Clear the interval and display Game Over text
+    var gameOverWin = function () {
+      clearInterval(intervalId);
+      ctx.font = "60px Courier";
+      ctx.fillStyle = "Black";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("You Win!", width / 2, height / 2);
+    };
+	
+ // Clear the interval and display Game Over text
+    var gameOverLose = function () {
+      clearInterval(intervalId);
+      ctx.font = "60px Courier";
+      ctx.fillStyle = "Black";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("Game Over", width / 2, height / 2);
+    };
+	
   if (checkSideToSide()) {
     clearInterval(intervalId);
-	alert("GAME OVER!  YOU WON!!!");
+	gameOverWin();
   }
   
  if (ifLanded()) {
    clearInterval(intervalId);
-   alert("GAME OVER!  YOU LOSE!!!");
+       gameOverLose();
  }
   
   for (var k = 0; k<bulletNumber; k++) {
