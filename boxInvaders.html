@@ -39,6 +39,7 @@ $(document).ready(function() {
 
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+ctx.font="60px Courier New";
 
 var width = canvas.width;
 var height = canvas.height;
@@ -227,21 +228,19 @@ var intervalId = setInterval(function () {
   // Clear the interval and display Game Over text
     var gameOverWin = function () {
       clearInterval(intervalId);
-      ctx.font = "60px Courier";
       ctx.fillStyle = "Black";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText("You Win!", width / 2, height / 2);
+      ctx.fillText("You Win!", width / 2, height / 2 - 25);
     };
 	
  // Clear the interval and display Game Over text
     var gameOverLose = function () {
       clearInterval(intervalId);
-      ctx.font = "60px Courier";
       ctx.fillStyle = "Black";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.fillText("Game Over", width / 2, height / 2);
+      ctx.fillText("Game Over", width / 2, height / 2 - 25);
     };
 	
   if (checkSideToSide()) {
