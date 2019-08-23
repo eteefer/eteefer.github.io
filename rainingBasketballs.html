@@ -48,7 +48,7 @@
 	 }
 	  
 	var ball = [];
-	ball[0] = new Ball(50, 50);
+	ball[0] = new Ball(50, 150);
 	
 	var keyActions = {
       32: "anotherBall",
@@ -57,7 +57,7 @@
 	
 	 $("body").keydown(function (event) {
       if (keyActions[event.keyCode] === "anotherBall") {
-	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1250), 50);
+	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1250), 150);
       }
 	  if (keyActions[event.keyCode] === "deleteBall" && ball.length > 0) {
 	    var tempIndex = Math.floor(Math.random() * ball.length);
@@ -97,6 +97,8 @@
 	</script>
 	</head>
 	<body>
-	<center><h2>It's Raining Basketballs!!!</h2></center>
+	<center><h2>It's Raining Basketballs!!!</h2>
+		<h4> Press spacebar for another ball.  Press delete to erase a random ball.</h4>
+	</center>
 	</body>
 	</html>
