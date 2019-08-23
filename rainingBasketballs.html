@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basketball</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+  </script>
+  <script>
+  $(document).ready(function() {
+    var Ball = function (x,y) {
+	  this.x = x;
+	  this.y = y;
+	  this.toggler = 1;
+	  this.draw();
+	}
+	
+	Ball.prototype.draw = function () {
+	  var ballHtml = '<img src ="file://C:/Users/tiffa/OneDrive/Desktop/test%20ball.png" width = "100">';
+	
+	  this.ballElement = $(ballHtml);
+	 
+	  this.ballElement.css({
+	    position: "absolute",
+		left: this.x,
+		top: this.y
+	  });
+	  
+	  $("body").append(this.ballElement);
+	 };
+	 
+	 Ball.prototype.moveDown = function (distance) {
+	   this.y += distance;
+	   
+	   this.ballElement.css({
+        left: this.x,
+        top: this.y
+      });
+	 }
+	 
+	 Ball.prototype.moveUp = function (distance) {
+	   this.y -= distance;
+	   
+	   this.ballElement.css({
+        left: this.x,
+        top: this.y
+      });
+	 }
+	  
+	var ball = [];
+	ball[0] = new Ball(50, 50);
+	
+	var keyActions = {
+      32: "anotherBall",
+	  46: "deleteBall"
+    };
+	
+	 $("body").keydown(function (event) {
+      if (keyActions[event.keyCode] === "anotherBall") {
+	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1250), 50);
+      }
+	  if (keyActions[event.keyCode] === "deleteBall" && ball.length > 0) {
+	    var tempIndex = Math.floor(Math.random() * ball.length);
+		ball[tempIndex].ballElement.css('display', 'none');
+	    ball.splice(tempIndex, 1);
+	  }
+	});
+	
+	var toggler = 1;
+	ballsBouncing = setInterval(function () {
+	  for (var i = 0; i < ball.length; i++) {
+	     if (ball[i].y < 500 && ball[i].toggler === 1) {
+		   ball[i].moveDown(5);
+		 }
+		 
+		 else if (ball[i].y >= 500 && ball[i].toggler === 1) {
+		   ball[i].toggler = -1;
+		   ball[i].moveUp(5);
+		 }
+		 
+		 else if (ball[i].y <= 500 && ball[i].y >= 49 && ball[i].toggler === -1) {
+		   ball[i].moveUp(5);
+		 }
+		 else {
+		   ball[i].toggler = 1;
+		   ball[i].moveDown(5);
+		 }
+		}    
+	   
+	  
+	  }, 30);
+	  
+	  
+	 
+	 }
+	);
+	</script>
+	</head>
+	<body>
+	<center><h2>It's Raining Basketballs!!!</h2></center>
+	</body>
+	</html>
