@@ -48,7 +48,7 @@
 	 }
 	  
 	var ball = [];
-	ball[0] = new Ball(50, 150);
+	ball[0] = new Ball(Math.floor(Math.random() * 1350), 150);
 	
 	var keyActions = {
       32: "anotherBall",
@@ -57,7 +57,7 @@
 	
 	 $("body").keydown(function (event) {
       if (keyActions[event.keyCode] === "anotherBall") {
-	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1250), 150);
+	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1350), 150);
       }
 	  if (keyActions[event.keyCode] === "deleteBall" && ball.length > 0) {
 	    var tempIndex = Math.floor(Math.random() * ball.length);
