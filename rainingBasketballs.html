@@ -49,7 +49,7 @@
 	 }
 	  
 	var ball = [];
-	ball[0] = new Ball(Math.floor(Math.random() * 1350), 150);
+	ball[0] = new Ball(Math.floor(Math.random() * 1350), 200);
 	
 	var keyActions = {
       32: "anotherBall",
@@ -58,7 +58,7 @@
 	
 	 $("body").keydown(function (event) {
       if (keyActions[event.keyCode] === "anotherBall") {
-	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1350), 150);
+	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1350), 200);
       }
 	  if (keyActions[event.keyCode] === "deleteBall" && ball.length > 0) {
 	    var tempIndex = Math.floor(Math.random() * ball.length);
@@ -79,7 +79,7 @@
 		   ball[i].moveUp(5);
 		 }
 		 
-		 else if (ball[i].y <= 500 && ball[i].y >= 149 && ball[i].toggler === -1) {
+		 else if (ball[i].y <= 500 && ball[i].y >= 200 && ball[i].toggler === -1) {
 		   ball[i].moveUp(5);
 		 }
 		 else {
@@ -89,7 +89,7 @@
 		}    
 	   
 	  
-	  }, 30);
+	  }, 20);
 	  
 	  
 	 
@@ -98,6 +98,12 @@
 	</script>
 	</head>
 	<body>
+	<a href="./treasure.html"><button class="button">Find the Buried Treasure</button></a>
+        <a href="./carsRacing.html"><button class="button">Cars Racing</button></a>
+        <a href="./snakegame.html"><button class="button">Snake Game</button></a>
+        <a href="./boxInvaders.html"><button class="button">Box Invaders</button></a>
+        <a href="./rainingBasketballs"><button class="button">Raining Basketballs</button></a>
+        <a href="https://www.purposefulprogramming.org" style="float: right; margin:25px"><em>www.purposefulprogramming.org</em></a>
 	<center><h2>It's Raining Basketballs!!!</h2>
 		<h4> Press spacebar for another ball.  Press delete to erase a random ball.</h4>
 	</center>
