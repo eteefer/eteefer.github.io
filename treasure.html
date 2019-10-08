@@ -93,6 +93,17 @@
       }
     });
      
+    var keyActions = {
+	  77: "showMathRandom"  //added for learning purposes
+    };
+	
+	$("body").keydown(function (event) {
+	  if (keyActions[event.keyCode] === "showMathRandom") {
+	    alert("var getRandomNumber = function (size) { \n return Math.floor(Math.random() * size); \n};")
+	  }
+	});
+	    
+	    
  /*NEW!!!Add a click handler to the button element
 	$("#startOver").click(function (event) {
 	   clicks = 0;
