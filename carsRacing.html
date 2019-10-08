@@ -95,9 +95,9 @@ $(document).ready(function() {
     var carsStart = function () {
          carsDriving = setInterval(function () {  //do not put keyword var 
 	 $("#Vroom").get(0).play();
-         player1.moveRight(Math.random() * 7);
-         player2.moveRight(Math.random() * 7);
-	     player3.moveRight(Math.random() * 7);
+         player1.moveRight(Math.floor(Math.random() * 7));
+         player2.moveRight(Math.floor(Math.random() * 7));
+	     player3.moveRight(Math.floor(Math.random() * 7));
 		 if (player1.x >= 800 || player2.x >= 800 || player3.x >= 800) {
 		   clearInterval(carsDriving);
 		   $("#Vroom").get(0).pause();
@@ -141,7 +141,7 @@ $(document).ready(function() {
 	
 	$("body").keydown(function (event) {
 	  if (keyActions[event.keyCode] === "showMathRandom") {
-	    alert("player1.moveRight(Math.random() * 7);\nplayer2.moveRight(Math.random() * 7);\nplayer3.moveRight(Math.random() * 7);")
+	    alert("player1.moveRight(Math.floor(Math.random() * 7));\nplayer2.moveRight(Math.floor(Math.random() * 7));\nplayer3.moveRight(Math.floor(Math.random() * 7));")
 	  }
 	});
 	
