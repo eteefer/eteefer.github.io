@@ -133,6 +133,18 @@ $(document).ready(function() {
 		                $("#Vroom").get(0).pause();
 				$("#Vroom").get(0).currentTime = 0;
 				});
+	
+	//Added for Math.random() learning here
+	var keyActions = {
+	  77: "showMathRandom"  //added for learning purposes
+    };
+	
+	$("body").keydown(function (event) {
+	  if (keyActions[event.keyCode] === "showMathRandom") {
+	    alert("player1.moveRight(Math.random() * 7));"
+	  }
+	});
+	
 });  //end of document ready
     </script>
 </head>
