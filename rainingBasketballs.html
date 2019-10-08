@@ -52,18 +52,22 @@
 	ball[0] = new Ball(Math.floor(Math.random() * 1350), 200);
 	
 	var keyActions = {
-      32: "anotherBall",
-	  46: "deleteBall"
+          32: "anotherBall",
+	  46: "deleteBall",
+	  77: "showMathRandom"  //added for learning purposes
     };
 	
 	 $("body").keydown(function (event) {
-      if (keyActions[event.keyCode] === "anotherBall") {
+          if (keyActions[event.keyCode] === "anotherBall") {
 	    ball[ball.length] = new Ball(Math.floor(Math.random() * 1350), 200);
-      }
+          }
 	  if (keyActions[event.keyCode] === "deleteBall" && ball.length > 0) {
 	    var tempIndex = Math.floor(Math.random() * ball.length);
 		ball[tempIndex].ballElement.css('display', 'none');
 	    ball.splice(tempIndex, 1);
+	  }
+          if (keyActions[event.keyCode] === "showMathRandom") {
+	    alert("ball[ball.length] = new Ball(Math.floor(Math.random() * 1350), 200);");
 	  }
 	});
 	
