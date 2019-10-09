@@ -249,6 +249,18 @@
         snake.setDirection(newDirection);
       }
     });
+        
+    //Added for Math.random() learning here
+	var keyActions = {
+	  77: "showMathRandom"  //added for learning purposes
+    };
+	
+	$("body").keydown(function (event) {
+	  if (keyActions[event.keyCode] === "showMathRandom") {
+	    alert("var randomCol = Math.floor(Math.random() * (widthInBlocks - 2)) + 1;\nvar randomRow = Math.floor(Math.random() * (heightInBlocks - 2)) + 1;\nthis.position = new Block(randomCol, randomRow);")
+	  }
+	});
+        
     </script>
 </body>
 </html>
