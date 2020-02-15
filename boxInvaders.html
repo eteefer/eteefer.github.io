@@ -202,7 +202,7 @@ var checkBulletHits = function () {
   for (var e=0;e<invadersLength;e++) {
     if(invaders[e] != undefined) {
      for (var f=0;f<bullet.length;f++) {
-	  if ((bullet[f].bx >= invaders[e].ix  && bullet[f].bx <= ((invaders[e].ix)+10))
+	  if ((invaders[e] != undefined) && (bullet[f].bx >= invaders[e].ix  && bullet[f].bx <= ((invaders[e].ix)+10)) //change
 	    && (bullet[f].by >= invaders[e].iy && bullet[f].by <= ((invaders[e].iy)+10))) {
 		delete(invaders[e]);
 	  }
