@@ -119,6 +119,11 @@ Bullet.prototype.drawBullet = function () {
 var ship = new Ship();
 var invaders = [];
 
+for (var i=0; i<10; i++) {
+  invaders[i] = new Invader();
+  //console.log(invaders[i]);
+};
+	
 var checkSideToSide = function () {
   for (var b=0;b<invaders.length;b++) {
     if (invaders[0] === undefined) {
@@ -159,10 +164,10 @@ var moveInvaders = function () {
   }
 };
 
-for (var i=0; i<10; i++) {
+/*for (var i=0; i<10; i++) {
   invaders[i] = new Invader();
   //console.log(invaders[i]);
-};
+};*/
 
 var bulletNumber = 0;
 var bullet = [];
