@@ -120,7 +120,8 @@ var ship = new Ship();
 var invaders = [];
 	
 var checkSideToSide = function () {
-  for (var b=0;b<invaders.length;b++) {
+  var invadersLength = invaders.length;  //heres the change and one below
+  for (var b=0;b<invadersLength;b++) {
     if (invaders[0] === undefined) {
 	  invaders.shift();
 	}
