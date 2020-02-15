@@ -187,7 +187,7 @@ $("body").keydown(function (event) {
 });
 
 var ifLanded = function () {
-  if ((invaders[0].iy+10) >= (height-50)) {
+  if (((invaders[0].iy)+10) >= (height-50)) {
     return true;
   } else {
     return false;
@@ -198,8 +198,8 @@ var checkBulletHits = function () {
   for (var e=0;e<invaders.length;e++) {
     if(invaders[e] != undefined) {
      for (var f=0;f<bullet.length;f++) {
-	  if ((bullet[f].bx >= invaders[e].ix  && bullet[f].bx <= (invaders[e].ix+10))
-	    && (bullet[f].by >= invaders[e].iy && bullet[f].by <= (invaders[e].iy+10))) {
+	  if ((bullet[f].bx >= invaders[e].ix  && bullet[f].bx <= ((invaders[e].ix)+10))
+	    && (bullet[f].by >= invaders[e].iy && bullet[f].by <= ((invaders[e].iy)+10))) {
 		delete(invaders[e]);
 	  }
 	 }
