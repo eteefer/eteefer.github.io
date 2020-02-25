@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Fun!</title>
+  <link href="draganddrop.css" rel="stylesheet">
+
+  <style>
+     /*
+	 
+	   This is CSS between the style tags.
+	   This is also how you comment in CSS.
+	   
+	 */
+	 
+     body {  
+	    background-color: lightgreen;
+	 }
+	 
+	 h1 {
+	    color:darkred;
+		text-align: center;
+	 }
+  </style>
+</head>
+
+<body>
+    <h1>Something Seems Fishy</h1>
+	<br />
+	<br />
+	<p>Click on this fish and drag him around.</p>
+	<img id="fishy" src=".\fishFish.png" width="200"/>
+	
+	<p>Blinky likes to show off what he can do</p>
+	<img id="Blinky" src=".\fishFish.png" width="200"/>
+	
+	<p>This fish ate something bad.  He's starting to feel a little green.</p>
+	<img id="sickFishy" src=".\fishFish.png" width="200"/>
+	
+	<p>And now for the disappearing fish!</p>
+	<img id="shyFishy" src=".\fishFish.png" width="200"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script><!--jQuery library-->
+<script src="draganddrop.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script><!--Another jQuery library-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.js"></script>
+
+<script>  //you'll leave your comments between these script tags
+
+$("#fishy").draggable();  //this is new, but cool.  It's from the jquery-ui library
+
+for (var i=0;i<10;i++) {
+  $("#Blinky").fadeOut(200).fadeIn(200);
+}
+
+$("#sickFishy").fadeTo(2000,.5);
+
+$("#shyFishy").slideUp(3000);
+
+
+
+</script>
+</body>
+</html>
