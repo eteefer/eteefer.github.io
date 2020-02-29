@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clicking and Moving</title>
+</head>
+<body>
+
+<h1 id = "heading"></h1>
+<p></p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+ $("html").click(function (event) {
+   var newText = "Click: " + event.pageX + ", " + event.pageY;
+   $("#heading").text(newText);
+ });
+ 
+ $("html").mousemove(function(event){
+    $("p").offset({
+	    left: event.pageX,  //offsetting from the left
+		top:  event.pageY   //offsetting from the top
+	  });
+    $("p").text(event.pageX + ", " + event.pageY);
+	
+  });
+
+</script>
+</body>
+</html>
