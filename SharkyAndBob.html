@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sharky and Bob</title>
+</head>
+
+<body>
+  
+  <img id = "bob" src = "https://classroomclipart.com/images/gallery/Clipart/Animals/Shark_Clipart/hammer-head_shark-clipart.jpg" width = "100"/>
+  <p id = "hiSharky">Hi Sharky!</p>
+  <img id = "sharky" src ="https://classroomclipart.com/images/gallery/Clipart/Animals/Shark_Clipart/shark-with-jaws-open-showing-teeth-clipart-127.jpg" width = 100 height = 50/>
+  <p id = "hiBob">Hi Bob!</p>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  <script>
+    var bobLeftOffset = 0;
+	var sharkyLeftOffset = 800;
+	
+	var moveSharks = function (){
+	  $("#bob,#hiSharky").offset({
+	                       left: bobLeftOffset  //no semicolon here
+						   });
+						   
+	  bobLeftOffset++;
+	  
+	  if (bobLeftOffset > 800) {
+	    bobLeftOffset = 0; //goes back to the beginning and starts over
+	  }
+	  
+	  $("#sharky,#hiBob").offset({
+						   left: sharkyLeftOffset
+						   });
+						   
+	  sharkyLeftOffset--;
+	
+	  if (sharkyLeftOffset < 1) {
+	    sharkyLeftOffset = 800;
+	  }
+	};
+	
+	setInterval(moveSharks, 20);  //this goes forever
+   </script>
+</body>
+</html>
