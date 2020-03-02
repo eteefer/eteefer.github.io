@@ -84,7 +84,7 @@ $(document).ready(function() {
     var player2 = new Car(20, 365);
     var player3 = new Car(20, 465);
     
-	
+    var done=true;
 	
 	
 	
@@ -113,6 +113,7 @@ $(document).ready(function() {
 		     alert("Tie!!!  Race Again!");
 		   }
 		   if (confirm("Would the same players like to race again?")) {
+			   done=true;
 	        player1.moveLeft(player1.x-20);
 			player1.x=20;
 		    player2.moveLeft(player2.x-20);
@@ -126,7 +127,6 @@ $(document).ready(function() {
 	   
 	};
 	
-	var done = true;
 	$("#goButton").click(function () {
 		             if (done) {
                              carsStart();
