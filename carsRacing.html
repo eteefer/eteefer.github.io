@@ -126,12 +126,17 @@ $(document).ready(function() {
 	   
 	};
 	
-	$("#goButton").click(carsStart);
+	var done = true;
+	$("#goButton").click(if (done) {
+                             carsStart();
+		             done=false;
+	});
 	
 	$("#stopButton").click(function () {
 	                        clearInterval(carsDriving);
 		                $("#Vroom").get(0).pause();
 				$("#Vroom").get(0).currentTime = 0;
+		                done=true;
 				});
 	
 	//Added for Math.random() learning here
