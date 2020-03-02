@@ -127,9 +127,11 @@ $(document).ready(function() {
 	};
 	
 	var done = true;
-	$("#goButton").click(if (done) {
+	$("#goButton").click(function () {
+		             if (done) {
                              carsStart();
 		             done=false;
+			     }
 	});
 	
 	$("#stopButton").click(function () {
