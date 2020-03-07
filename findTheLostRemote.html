@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find the Lost Remote!</title>
+</head>
+<body>
+    <h1 id="heading">Find the Lost Remote!</h1>
+    <img id="map" width=400 height=400 src="http://nostarch.com/images/treasuremap.png"/>
+
+    <p id="hint"></p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+    /*  
+	        Function to generate a random number from 0 to (lengthOfSide-1)
+			The function will be called twice (it's reusable):
+			lengthOfSide will equal width of the map image on first call,
+			lengthOfSide will equal height of the map image on the second call
+			                                                                           */
+																			 
+    var randomNumber = function (lengthOfSide) {
+      return Math.floor(Math.random() * lengthOfSide);
+    };
+
+   /*  
+	        Function to calculate the distance between the click and the treasure,
+		.offsetX and .offsetY are properties that come with the (click) event object
+		event.offsetX contains number value of how far from left side of map image click is
+		event.offsetY contains number value of how from from top side of map image click is
+			                                                                           */
+																					   																			 
+    var calculateDistance = function (event, remote) {
+      var diffX = event.offsetX - remote.x;  //determines length of one leg of right triangle
+      var diffY = event.offsetY - remote.y;  //determines length of other leg of right triangle
+      return ((diffX ** 2) + (diffY ** 2))**(1/2);  //returns length of hypotenuse
+    };
+
+    /* 
+	       Function to return a string with an appropriate hint for the distance
+	       between the click and the treasure
+		                                                                               */
+																					   
+    var determineHint = function (distance) {
+      if (distance < 10) {
+        return "Boiling hot!";
+      } else if (distance < 20) {
+        return "Really hot";
+      } else if (distance < 40) {
+        return "Hot";
+      } else if (distance < 80) {
+        return "Warm";
+      } else if (distance < 160) {
+        return "Cold";
+      } else if (distance < 320) {
+        return "Really cold";
+      } else {
+        return "Freezing!";
+      }
+    };
+
+    /*
+	                           Initialize Variables
+	                                                                                  */
+																					  
+    var width = document.getElementById("map").width;
+    var height = document.getElementById("map").height;
+    var clicks = 0;
+	
+    //check values for width and height in console to verify
+    console.log("This is the width: " + width + " pixels");  //see it in the console
+    console.log("This is the height: " + height + " pixels");  //see it in the console
+	
+    // Initialize treasure variable as an object with random treasure location
+    var remote = {
+      x: randomNumber(width),  //x property will contain a number between 0 and (width-1)
+      y: randomNumber(height)  //y property will contain a number between 0 and (height-1)
+    };
+
+    /* 
+	              Add a click handler to the img element with id of map,
+		      coordinate (0,0) is at upper-left corner of map,
+	              the function will execute with every click,
+	              event will contain an object with information about the click,
+		     
+	                                                                                  */
+																					  
+    $("#map").click(function (event) {
+      clicks++;
+
+      // Calculate the distance between click event and treasure
+      var distance = calculateDistance(event, treasure);
+	  
+      // Figure out correct hint to display to user
+      var hintToDisplay = determineHint(distance);
+
+      // Change the text in the #hint element with the new hint
+      $("#hint").text(hintToDisplay);
+
+      // If the click was close enough, tell them they found the remote
+      if (distance < 8) {
+        alert("The remote was found in " + clicks + " tries!");
+      }
+    });
+	
+    </script>
+</body>
+</html>
