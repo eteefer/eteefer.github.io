@@ -44,12 +44,14 @@
 		                                                                               */
 																					   
     var determineHint = function (distance) {
-      if (distance < 10) {
+      if (distance < 20) {
         return "I think I feel the remote!";
-      } else if (distance < 25) {
-        return "It might be over here.";
       } else if (distance < 50) {
-        return "It's not over here.";
+        return "Hmm.  I think there is something over here!";
+      } else if (distance < 100) {
+        return "It's around here somewhere.";
+      } else if (distance < 200) {
+	return "It's not here."
       } else if (distance < 300) {
         return "It's definitely not over here.";
       } else {
@@ -96,7 +98,7 @@
       $("#hint").text(hintToDisplay);
 
       // If the click was close enough, tell them they found the remote
-      if (distance < 8) {
+      if (distance < 10) {
         alert("The remote was found in " + clickCounter + " tries!");
       }
     });
