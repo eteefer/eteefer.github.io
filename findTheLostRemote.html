@@ -44,19 +44,32 @@
 		                                                                               */
 																					   
     var determineHint = function (distance) {
-      if (distance < 20) {
-        return "I think I feel the remote!";
-      } else if (distance < 50) {
-        return "Hmm.  I think there is something over here!";
-      } else if (distance < 100) {
-        return "It's around here somewhere.";
-      } else if (distance < 200) {
-	return "It's not here."
-      } else if (distance < 300) {
-        return "It's definitely not over here.";
+      if (previousDistance === null) {
+	previousDistance = distance;
+        if (distance < 20) {
+          return "I think I feel the remote!";
+        } else if (distance < 50) {
+          return "Hmm.  I think there is something over here!";
+        } else if (distance < 100) {
+          return "It's around here somewhere.";
+        } else if (distance < 200) {
+	  return "It's not here."
+        } else if (distance < 300) {
+          return "It's definitely not over here.";
+        } else {
+          return "Is it even in this room?";
+        }
       } else {
-        return "Is it even in this room?";
-      }
+       if (previousDistance > distance) {
+	  previousDistance = distance;
+	  return "Getting warmer";
+       } else if (distance > previousDistance) {
+	  previousDistance = distance;
+	  return "Getting colder";
+       } else {
+	  return "No change";
+       }
+    }
     };
 
     /*
@@ -65,6 +78,7 @@
 																					  
     var width = document.getElementById("map").width;
     var height = document.getElementById("map").height;
+    var previousDistance = null;
     var clickCounter = 0;
 	
     //check values for width and height in console to verify
