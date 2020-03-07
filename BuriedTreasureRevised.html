@@ -12,36 +12,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
-	
     /*  
 	        Function to generate a random number from 0 to (lengthOfSide-1)
 			The function will be called twice (it's reusable):
-			lengthOfSide will equal width of the image on first call,
-			lengthOfSide will equal height of the image on the second call
+			lengthOfSide will equal width of the map image on first call,
+			lengthOfSide will equal height of the map image on the second call
 			                                                                           */
 																			 
     var randomNumber = function (lengthOfSide) {
       return Math.floor(Math.random() * lengthOfSide);
     };
 
-
-
-	/*  
+   /*  
 	        Function to calculate the distance between the click and the treasure,
-			.offsetX and .offsetY are properties that come with the (click) event object
+		.offsetX and .offsetY are properties that come with the (click) event object
+		event.offsetX gives number value of how far from left side of map image click is
+		event.offsetY gives number value of how from from top side of map image click is
 			                                                                           */
-																					   
-																			 
+																					   																			 
     var calculateDistance = function (event, treasure) {
       var diffX = event.offsetX - treasure.x;  //determines length of one leg of right triangle
       var diffY = event.offsetY - treasure.y;  //determines length of other leg of right triangle
       return ((diffX ** 2) + (diffY ** 2))**(1/2);  //returns length of hypotenuse
     };
 
-
-
     /* 
 	       Function to return a string with an appropriate hint for the distance
+	       between the click and the treasure
 		                                                                               */
 																					   
     var determineHint = function (distance) {
@@ -62,8 +59,6 @@
       }
     };
 
-
-
     /*
 	                           Initialize Variables
 	                                                                                  */
@@ -72,8 +67,8 @@
     var height = document.getElementById("map").height;
     var clicks = 0;
 	
-	//check values for width and height in console to verify
-	console.log("This is the width: " + width + " pixels");  //see it in the console
+    //check values for width and height in console to verify
+    console.log("This is the width: " + width + " pixels");  //see it in the console
     console.log("This is the height: " + height + " pixels");  //see it in the console
 	
     // Initialize treasure variable as an object with random treasure location
@@ -82,21 +77,21 @@
       y: randomNumber(height)  //y property will contain a number between 0 and (height-1)
     };
 
-
-
     /* 
-	              Add a click handler to the img element,
-				  the function will execute with every click,
-	              event will contain an object with information about the click
+	              Add a click handler to the img element with id of map,
+		      coordinate (0,0) is at upper-left corner of map,
+	              the function will execute with every click,
+	              event will contain an object with information about the click,
+		     
 	                                                                                  */
 																					  
     $("#map").click(function (event) {
       clicks++;
 
-      // Get distance between click event and treasure
+      // Calculate the distance between click event and treasure
       var distance = calculateDistance(event, treasure);
 	  
-      // Convert distance to a hint
+      // Figure out correct hint to display to user
       var hintToDisplay = determineHint(distance);
 
       // Update the #hint element with the new hint
