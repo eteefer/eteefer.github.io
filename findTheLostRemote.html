@@ -9,6 +9,7 @@
     <img id="map" width=400 height=400 src="http://nostarch.com/images/treasuremap.png"/>
 
     <p id="hint"></p>
+    <h1 id="found"></h1>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -35,7 +36,7 @@
       var a = event.offsetX - remote.x;  //determines length of one leg of right triangle
       var b = event.offsetY - remote.y;  //determines length of other leg of right triangle
       var c = ((a ** 2) + (b ** 2))**(1/2);  //calculates hypotenuse
-      return c;  //returns hypotenuse
+      return c;  //returns length of hypotenuse from click to remote in pixels
     };
 
     /* 
@@ -93,9 +94,9 @@
 
     /* 
 	              Add a click handler to the img element with id of map,
-		      coordinate (0,0) is at upper-left corner of map,
+		      coordinate (0,0) is at upper-left corner of image,
 	              the function will execute with every click,
-	              event will contain an object with information about the click,
+	              event will contain an object with information about the click.
 		     
 	                                                                                  */
 																					  
@@ -111,9 +112,9 @@
       // Change the text in the #hint element with the new hint
       $("#hint").text(hintToDisplay);
 
-      // If the click was close enough, tell them they found the remote
+      // If the click is within 10 pixels, tell user the remote if found
       if (distance < 10) {
-        alert("The remote was found in " + clickCounter + " tries!");
+	$("#found").text = "You found the remote in " + clickCounter + " tries!";
       }
     });
 	
