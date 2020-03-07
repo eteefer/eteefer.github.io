@@ -25,16 +25,17 @@
     };
 
    /*  
-	        Function to calculate the distance between the click and the treasure,
+	        Function to calculate the distance between the click and the remote,
 		.offsetX and .offsetY are properties that come with the (click) event object
-		event.offsetX contains number value of how far from left side of map image click is
-		event.offsetY contains number value of how from from top side of map image click is
+		event.offsetX contains number value of how far from left side of image click is
+		event.offsetY contains number value of how from from top side of image click is
 			                                                                           */
 																					   																			 
     var calculateDistance = function (event, remote) {
-      var diffX = event.offsetX - remote.x;  //determines length of one leg of right triangle
-      var diffY = event.offsetY - remote.y;  //determines length of other leg of right triangle
-      return ((diffX ** 2) + (diffY ** 2))**(1/2);  //returns length of hypotenuse
+      var a = event.offsetX - remote.x;  //determines length of one leg of right triangle
+      var b = event.offsetY - remote.y;  //determines length of other leg of right triangle
+      var c = ((a ** 2) + (b ** 2))**(1/2);  //calculates hypotenuse
+      return c;  //returns hypotenuse
     };
 
     /* 
@@ -44,19 +45,15 @@
 																					   
     var determineHint = function (distance) {
       if (distance < 10) {
-        return "Boiling hot!";
-      } else if (distance < 20) {
-        return "Really hot";
-      } else if (distance < 40) {
-        return "Hot";
-      } else if (distance < 80) {
-        return "Warm";
-      } else if (distance < 160) {
-        return "Cold";
-      } else if (distance < 320) {
-        return "Really cold";
+        return "I think I feel the remote!";
+      } else if (distance < 25) {
+        return "It might be over here.";
+      } else if (distance < 50) {
+        return "It's not over here.";
+        else if (distance < 300) {
+        return "It's definitely not over here.";
       } else {
-        return "Freezing!";
+        return "Is it even in this room?";
       }
     };
 
@@ -66,13 +63,13 @@
 																					  
     var width = document.getElementById("map").width;
     var height = document.getElementById("map").height;
-    var clicks = 0;
+    var clickCounter = 0;
 	
     //check values for width and height in console to verify
     console.log("This is the width: " + width + " pixels");  //see it in the console
     console.log("This is the height: " + height + " pixels");  //see it in the console
 	
-    // Initialize treasure variable as an object with random treasure location
+    // Initialize remote variable as an object with random remote location
     var remote = {
       x: randomNumber(width),  //x property will contain a number between 0 and (width-1)
       y: randomNumber(height)  //y property will contain a number between 0 and (height-1)
@@ -87,7 +84,7 @@
 	                                                                                  */
 																					  
     $("#map").click(function (event) {
-      clicks++;
+      clickCounter++;
 
       // Calculate the distance between click event and treasure
       var distance = calculateDistance(event, treasure);
