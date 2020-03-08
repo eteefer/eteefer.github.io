@@ -102,7 +102,8 @@
 																					  
     $("#map").click(function (event) {
       clickCounter++;
-
+      console.log(event.offsetX + ", " + event.offsetY);
+	    
       // Calculate the distance between click event and treasure
       var distance = calculateDistance(event, remote);
 	  
@@ -112,7 +113,7 @@
       // Change the text in the #hint element with the new hint
       $("#hint").text(hintToDisplay);
 
-      // If the click is within 10 pixels, tell user the remote if found
+      // If the click is within 10 pixels, tell user the remote is found
       if (distance < 10) {
 	$("#found").text = "You found the remote in " + clickCounter + " tries!";
       }
