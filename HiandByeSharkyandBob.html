@@ -50,7 +50,7 @@
 	  
 	  if (bobLeftOffset > 800) {
 	    bobLeftOffset = 0; //goes back to the beginning and starts over
-		$("#hiSharky).text("Hi Sharky!");
+		$("#hiSharky").text("Hi Sharky!");
 	  }
 	  
 	  $("#sharky,#hiBob").offset({
@@ -61,12 +61,12 @@
 	
 	  if (sharkyLeftOffset < 0) {
 	    sharkyLeftOffset = 800;  //goes back to 800 pixels to start over
-		$("#hiBob).text("Hi Bob!");
+		$("#hiBob").text("Hi Bob!");
 	  }
 	  
 	  if ($("#bob").offsetX === $("#sharky).offsetX) {
-	     $("#hiSharky).text("Bye Sharky!");
-		 $("#hiBob).text("Bye Bob!");
+	     $("#hiSharky").text("Bye Sharky!");
+		 $("#hiBob").text("Bye Bob!");
 	  }
 	};
 	/*         End of moveSharks function                  */
