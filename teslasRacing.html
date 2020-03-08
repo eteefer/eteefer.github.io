@@ -35,14 +35,13 @@ $(document).ready(function() {
     };
 
     Car.prototype.draw = function (pString) {
-      var carHtml = '<img src="./tesla.png" width=100>';
+      var carImage = '<img src="./tesla.png" width=100>';
 
-      this.carElement = $(carHtml);
+      this.carElement = $(carImage);
 
       this.carElement.css({
         position: "absolute",
         left: this.x
-        //top: this.y
       });
 
       $("body").append('<br /><br />',pString, '<br /><br />', this.carElement);  //this is hacky
@@ -53,7 +52,6 @@ $(document).ready(function() {
 
       this.carElement.css({
         left: this.x
-        //top: this.y
       });
     };
 
@@ -62,15 +60,9 @@ $(document).ready(function() {
 
       this.carElement.css({
         left: this.x
-        //top: this.y
       });
     };
 
-    
-	/*
-	  This is where we'll add code
-	                              */
-	
 	  
     var player1 = new Car(20, '<p id = "p1N" style = "position: absolute; left: 15px"></p>');
     var player2 = new Car(20, '<p id = "p2N" style = "position: absolute; left: 15px"></p>');
