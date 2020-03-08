@@ -27,10 +27,10 @@ $(document).ready(function() {
     var Car = function (x, pString) {
       this.x = x;
      // this.y = y;
-      this.draw();
+      this.draw(pString);
     };
 
-    Car.prototype.draw = function () {
+    Car.prototype.draw = function (pString) {
       var carHtml = '<img src="./tesla.png" width=100>';
 
       this.carElement = $(carHtml);
