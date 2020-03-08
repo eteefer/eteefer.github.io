@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sharky and Bob</title>
+  <style>
+    #buttonDiv {
+	  text-align: center;
+	}
+	button {
+	    color: white;
+	}
+	#resume {
+	  background-color: green;
+	}
+    #stop {
+	  background-color: red;
+	}
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <img id = "bob" src = "https://classroomclipart.com/images/gallery/Clipart/Animals/Shark_Clipart/hammer-head_shark-clipart.jpg" width = "100"/>
+    <p id = "hiSharky">Hi Sharky!</p>
+    <img id = "sharky" src ="https://classroomclipart.com/images/gallery/Clipart/Animals/Shark_Clipart/shark-with-jaws-open-showing-teeth-clipart-127.jpg" width = 100 height = 50/>
+    <p id = "hiBob">Hi Bob!</p>
+  </div>
+  
+  <div id="buttonDiv">
+    <button id="resume">Resume</button>
+    <button id="stop">Stop!</button>
+  </div>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  <script>
+    var bobLeftOffset = 0;
+	var sharkyLeftOffset = 800;
+	
+	
+	/*          Start of moveSharks fxn                  */
+	
+	var moveSharks = function (){
+	  $("#bob,#hiSharky").offset({
+	                       left: bobLeftOffset
+						   });
+						   
+	  bobLeftOffset++;
+	  
+	  if (bobLeftOffset > 800) {
+	    bobLeftOffset = 0; //goes back to the beginning and starts over
+		$("#hiSharky).text("Hi Sharky!");
+	  }
+	  
+	  $("#sharky,#hiBob").offset({
+						   left: sharkyLeftOffset
+						   });
+						   
+	  sharkyLeftOffset--;
+	
+	  if (sharkyLeftOffset < 0) {
+	    sharkyLeftOffset = 800;  //goes back to 800 pixels to start over
+		$("#hiBob).text("Hi Bob!");
+	  }
+	  
+	  if ($("#bob").offsetX === $("#sharky).offsetX) {
+	     $("#hiSharky).text("Bye Sharky!");
+		 $("#hiBob).text("Bye Bob!");
+	  }
+	};
+	/*         End of moveSharks function                  */
+	
+	
+	var intervalId = setInterval(moveSharks, 20);
+	var done = false;
+	
+	$("#resume").click(function () {
+	               if (done) {
+	               intervalId = setInterval(moveSharks, 20);
+				   done=false;
+				   };
+				   });
+				   
+	$("#stop").click(function () {
+	                        clearInterval(intervalId);
+							done = true;
+					});
+   </script>
+</body>
+</html>
