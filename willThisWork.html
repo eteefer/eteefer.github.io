@@ -40,8 +40,8 @@ $(document).ready(function() {
         left: this.x
         //top: this.y
       });
-      $("body").append(pString);
-      $("body").append(this.carElement);
+
+      $("body").append(pString, this.carElement);
     };
 
     Car.prototype.moveRight = function (distance) {
@@ -200,8 +200,10 @@ Your browser does not support this audio</audio>
   <h5>adapted from Chapter 12 of <em><a href="https://nostarch.com/javascriptforkids">JavaScript for Kids</a></em> text by Nick Morgan</h5>
   <br />
   </div>
+  <div>
   <button id = "goButton">Go</button>
   <button id = "stopButton">Stop</button>
+  </div>  
 <!--
 <p id = "p1N" style = "position: absolute; left: 15px; top: 260px"></p>
 <p id = "p2N" style = "position: absolute; left: 15px; top: 360px"></p>
