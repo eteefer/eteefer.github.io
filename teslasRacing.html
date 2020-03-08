@@ -28,44 +28,44 @@
    
     <script>
 $(document).ready(function() {
-    var Car = function (x, pString) {
+    var Tesla = function (x, pString) {
       this.x = x;
       this.draw(pString);
     };
 
-    Car.prototype.draw = function (pString) {
-      var carImage = '<img src="./tesla.png" width=100>';
+    Tesla.prototype.draw = function (pString) {
+      var teslaImage = '<img src="./tesla.png" width=100>';
 
-      this.carElement = $(carImage);
+      this.teslaElement = $(teslaImage);
 
-      this.carElement.css({
+      this.teslaElement.css({
         position: "absolute",
         left: this.x
       });
 
-      $("body").append('<br /><br />',pString, '<br /><br />', this.carElement);  //this is hacky
+      $("body").append('<br /><br />',pString, '<br /><br />', this.teslaElement);
     };
 
-    Car.prototype.moveRight = function (distance) {
+    Tesla.prototype.moveRight = function (distance) {
       this.x += distance;
 
-      this.carElement.css({
+      this.teslaElement.css({
         left: this.x
       });
     };
 
-    Car.prototype.moveLeft = function (distance) {
+    Tesla.prototype.moveLeft = function (distance) {
       this.x -= distance;
 
-      this.carElement.css({
+      this.teslaElement.css({
         left: this.x
       });
     };
 
 	  
-    var player1 = new Car(20, '<p id = "p1N" style = "position: absolute; left: 15px"></p>');
-    var player2 = new Car(20, '<p id = "p2N" style = "position: absolute; left: 15px"></p>');
-    var player3 = new Car(20, '<p id = "p3N" style = "position: absolute; left: 15px"></p>');
+    var player1 = new Tesla(20, '<p id = "p1N" style = "position: absolute; left: 15px"></p>');
+    var player2 = new Tesla(20, '<p id = "p2N" style = "position: absolute; left: 15px"></p>');
+    var player3 = new Tesla(20, '<p id = "p3N" style = "position: absolute; left: 15px"></p>');
     
     var enterName1 = "Racer 1";
     var enterName2 = "Racer 2";
@@ -195,18 +195,13 @@ Your browser does not support this audio</audio>
 <br style="clear:both" />
   <div style="text-align: center">
   <h2 id="heading">Teslas Racing!!!</h2>
-  <h5>adapted from Chapter 12 of <em><a href="https://nostarch.com/javascriptforkids">JavaScript for Kids</a></em> text by Nick Morgan</h5>
   <br />
   </div>
   <div>
   <button id = "goButton">Go</button>
   <button id = "stopButton">Stop</button>
   </div>  
-<!--
-<p id = "p1N" style = "position: absolute; left: 15px; top: 260px"></p>
-<p id = "p2N" style = "position: absolute; left: 15px; top: 360px"></p>
-<p id = "p3N" style = "position: absolute; left: 15px; top: 460px"></p>
--->
+
 <div id="bottomButtons">
 <button id="racer1" class="renameButtons">Rename Racer 1</button>
 <button id="racer2" class="renameButtons">Rename Racer 2</button>
