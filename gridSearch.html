@@ -47,7 +47,7 @@
 */
 
 var grid1  = document.getElementById("gridDumb");
-var side = grid1.width;
+var side1 = grid1.width;
 var sideInt1 = side1/10;
 var ctx1 = grid1.getContext("2d");
 ctx.strokeRect(0,0,side1,side1);
@@ -71,7 +71,7 @@ var side2 = grid2.width;
 var sideInt2 = side2/10;
 var ctx2 = grid2.getContext("2d");
 ctx2.strokeRect(0,0,sid2e,side2);
-for (var b = sideInt; b<side; b = b+sideInt) {  
+for (var b = sideInt2; b<side2; b = b+sideInt2) {  
    ctx2.beginPath();
    ctx2.moveTo(a,0);
    ctx2.lineTo(a, side2);
