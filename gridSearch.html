@@ -20,7 +20,7 @@
   <h2 id="heading">The Computer is Searching For You!!!</h2>
   <p>See which implementation finds you first.</p>
   <p>Select a location on the grid.</p>
-  <button>Select Coordinates</button>
+  <button id="playerxy">Select Coordinates</button>
   <br />
 </div>
   
@@ -78,6 +78,13 @@ for (var b = sideInt; b<side; b = b+sideInt) {
    ctx2.moveTo(0, a);
    ctx2.lineTo(side2, a);
    ctx2.stroke();
+}
+
+$("#playerxy").click(function () {
+	var playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
+        var playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
+        var playerLocation = [playerX, playerY];
+	console.log(playerLocation);
 }
 </body>
 </html>
