@@ -73,10 +73,10 @@ var ctx2 = grid2.getContext("2d");
 ctx2.strokeRect(0,0,side2,side2);
 for (var b = sideInt2; b<side2; b = b+sideInt2) {  
    ctx2.beginPath();
-   ctx2.moveTo(a,0);
-   ctx2.lineTo(a, side2);
-   ctx2.moveTo(0, a);
-   ctx2.lineTo(side2, a);
+   ctx2.moveTo(b,0);
+   ctx2.lineTo(b, side2);
+   ctx2.moveTo(0, b);
+   ctx2.lineTo(side2, b);
    ctx2.stroke();
 }
 
