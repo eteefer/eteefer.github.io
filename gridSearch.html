@@ -162,25 +162,11 @@ var gameLoop = function () {
 	yStart = (computerGuess[1]-1)*sideInt2;
 	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);
   
-    clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
+        clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
 	
-	
-	var found = function () {
-	
-	alert("\nThe computer found you at location: " + computerGuess[0] + ", " + computerGuess[1] + "!!!\n\nThe computer took " + 
-	guesses + " guesses to find you!!!!");
-   
-	
-	}
 	
   }
   
-   //the if below is extra code to help protect against an infinite loop, left here to show you
-  if (guesses >= 200) {  //have to break at a value greater than 100 to see the loop isn't stopping correctly
-                        
-        clearInterval(intervalId);           
-	
-  }
   
 }  //Game loop ends here
 
@@ -191,9 +177,9 @@ var gameLoop = function () {
    
 */
 $("#playerxy").click(function () {
-	var playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
-        var playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
-        var playerLocation = [playerX, playerY];
+	playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
+        playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
+        playerLocation = [playerX, playerY];
 	console.log(playerLocation);
 	intervalId = setInterval(gameLoop, 500);
 });
