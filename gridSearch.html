@@ -24,12 +24,12 @@
   <br />
 </div>
   
-<div style="float:left; width:50%; ">
+<div id="leftSide" style="float:left; width:50%; ">
   <p class = "description">Computer does not keep track of its guesses.</p>
   <canvas id="gridDumb" width = "320" height = "320"></canvas>
 </div>
   
-<div style="float:left; width:50%; ">
+<div id="rightSide" style="float:left; width:50%; ">
   <p class = "description">Computer keeps track of its guesses.</p>
   <canvas id="gridSmart" width = "320" height = "320"></canvas>
 </div>
@@ -163,7 +163,8 @@ var gameLoop = function () {
 	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);
   
         clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
-	
+	var messageString = "<p>The computer found you at (" + computerGuess[0] + ", " + computerGuess[1] + ") in " + guesses " guesses.</p>";
+	$("#rightSide).append(messageString);
 	
   }
   
