@@ -83,16 +83,8 @@ for (var b = sideInt2; b<side2; b = b+sideInt2) {
 var playerX;
 var playerY;
 var playerLocation = []; 
-
-var wait2play = true;
 	
-$("#playerxy").click(function () {
-	var playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
-        var playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
-        var playerLocation = [playerX, playerY];
-	console.log(playerLocation);
-	wait2play=false;
-});
+var intervalId;
 	
 	
 	/* 
@@ -198,10 +190,14 @@ var gameLoop = function () {
    FINAL CODE TO RUN WHEN COMPUTER FINDS THE PLAYER 
    
 */
-if (!wait2play) {
-var intervalId = setInterval(gameLoop, 500);
-};
-	
+$("#playerxy").click(function () {
+	var playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
+        var playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
+        var playerLocation = [playerX, playerY];
+	console.log(playerLocation);
+	intervalId = setInterval(gameLoop, 500);
+});
+
 </script>
 </body>
 </html>
