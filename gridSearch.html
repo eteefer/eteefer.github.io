@@ -26,12 +26,57 @@
   
 <div style="float:left; width:50%; ">
   <p class = "description">Computer does not keep track of its guesses.</p>
-
+  <canvas id="gridDumb" width = "400" height = "400"></canvas>
 </div>
   
 <div style="float:left; width:50%; ">
   <p class = "description">Computer keeps track of its guesses.</p>
-  
+  <canvas id="gridSmart" width = "400" height = "400"></canvas>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+</script>
+	
+/*
+
+                 DRAW THE GRID1
+				 
+*/
+
+var grid  = document.getElementById("gridDumb");
+var side = grid.width;
+var sideInt = side/10;
+var ctx = grid.getContext("2d");
+ctx.strokeRect(0,0,side,side);
+for (var a = sideInt; a<side; a = a+sideInt) {  
+   ctx.beginPath();
+   ctx.moveTo(a,0);
+   ctx.lineTo(a, side);
+   ctx.moveTo(0, a);
+   ctx.lineTo(side, a);
+   ctx.stroke();
+}
+			      
+/*
+
+                 DRAW THE GRID2
+				 
+*/
+
+var grid  = document.getElementById("gridSmart");
+var side = grid.width;
+var sideInt = side/10;
+var ctx = grid.getContext("2d");
+ctx.strokeRect(0,0,side,side);
+for (var a = sideInt; a<side; a = a+sideInt) {  
+   ctx.beginPath();
+   ctx.moveTo(a,0);
+   ctx.lineTo(a, side);
+   ctx.moveTo(0, a);
+   ctx.lineTo(side, a);
+   ctx.stroke();
+}
 </body>
 </html>
