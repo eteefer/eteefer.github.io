@@ -86,8 +86,48 @@ var playerLocation = [];
 	
 var intervalId;
 	
+var xStart = 0;
+var yStart = 0;
+
+var cx = 0;  //initialize at 0 so console doesn't hold onto previous run value
+var cy = 0;  //ditto
+
+var guesses = 0; //initialize guesses at 0
+
+var messageString;
+var done = false;
 	
-	/* 
+ctx1.fillStyle = "Blue";
+	
+console.log("Your location is at: " + playerX + ", " + playerY + ".\n\n");
+
+var gameLoop1 = function {
+  cx = Math.floor(Math.random() * 10) + 1;  //computer generates x guess from 1 to 10
+  cy = Math.floor(Math.random() * 10) + 1;  //computer generates y guess from 1 to 10
+
+  if (cx != playerX || cy != playerY) { //OR, only one has to be true to be true	
+    xStart = cx*sideInt1;
+    yStart = cy*sideInt1;
+    ctx1.fillRect(xStart,yStart,sideInt1,sideInt1);
+  
+    ++guesses; //guess made..increment guesses, could inc in console.log, show ++ before and after
+  
+    console.log("Number of guesses: " + guesses);
+    console.log("The computer guesses: " + cx + ", " + cy + ".\n\n");
+  } else {
+      console.log("The computer found you!!!!");
+      ctx1.fillStyle = "Red";
+      xStart = cx*sideInt1;
+      yStart = cy*sideInt1;
+      ctx1.fillRect(xStart,yStart,sideInt1,sideInt1);
+      clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
+      messageString = "<p>The computer found you at (" + cx + ", " + cy + ") in " + guesses + " guesses.</p>";
+      $("#leftSide").append(messageString);
+      intervalId = setInterval(gameLoop2, 200);
+  }
+}	
+	
+/* 
 
     THIS CHUNK OF CODE SETS UP A LARGE ARRAY 
     CONTAINING ALL THE COORDINATES ON THE GRID 
@@ -120,7 +160,7 @@ for (var i=1;i<11;i++) {  //we will use this for the x coordinates on grid, reme
 */
 
 computerGuess = [];
-var guesses = 0; //initialize guesses at 0
+guesses = 0; //initialize guesses at 0
 
 
 
@@ -132,10 +172,10 @@ var guesses = 0; //initialize guesses at 0
 
 ctx2.fillStyle = "Blue";
 
-var xStart = 0;
-var yStart = 0;
+xStart = 0;
+yStart = 0;
 
-var gameLoop = function () {
+var gameLoop2 = function () {
 
   randomIndex = Math.floor(Math.random() * largeArray.length)
   computerGuess = largeArray[randomIndex];
@@ -163,7 +203,7 @@ var gameLoop = function () {
 	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);
   
         clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
-	var messageString = "<p>The computer found you at (" + computerGuess[0] + ", " + computerGuess[1] + ") in " + guesses + " guesses.</p>";
+	messageString = "<p>The computer found you at (" + computerGuess[0] + ", " + computerGuess[1] + ") in " + guesses + " guesses.</p>";
 	$("#rightSide").append(messageString);
 	
   }
@@ -178,11 +218,14 @@ var gameLoop = function () {
    
 */
 $("#playerxy").click(function () {
+	$("playerxy").off("click");
 	playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
         playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
         playerLocation = [playerX, playerY];
 	console.log(playerLocation);
-	intervalId = setInterval(gameLoop, 500);
+	intervalId = setInterval(gameLoop1, 200);
+	
+	
 });
 
 </script>
