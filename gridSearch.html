@@ -2,6 +2,18 @@
 <html>
 <head>
   <title>Grid Search</title>
+  <style>
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
 </head>
 <body>
 <div>
@@ -22,18 +34,17 @@
   <p>Select a location on the grid.</p>
   <button id="playerxy">Select Coordinates</button>
   <br />
-</div>
-  
-<div id="leftSide" style="float:left; width:50%; ">
+<div class = "row">  
+<div id="leftSide" class="column">
   <p class = "description">Computer does not keep track of its guesses.</p>
   <canvas id="gridDumb" width = "320" height = "320"></canvas>
 </div>
   
-<div id="rightSide" style="float:left; width:50%; ">
+<div id="rightSide" class="column">
   <p class = "description">Computer keeps track of its guesses.</p>
   <canvas id="gridSmart" width = "320" height = "320"></canvas>
 </div>
-<div>
+</div>
 <button onClick="window.location.reload();" style="text-align: center">Start Over</button>
 </div>
 
