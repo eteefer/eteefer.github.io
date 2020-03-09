@@ -105,8 +105,8 @@ var gameLoop1 = function () {
   cy = Math.floor(Math.random() * 10) + 1;  //computer generates y guess from 1 to 10
 
   if (cx != playerX || cy != playerY) { //OR, only one has to be true to be true	
-    xStart = cx*sideInt1;
-    yStart = cy*sideInt1;
+    xStart = (cx-1)*sideInt1;
+    yStart = (cy-1)*sideInt1;
     ctx1.fillRect(xStart,yStart,sideInt1,sideInt1);
   
     ++guesses; //guess made..increment guesses, could inc in console.log, show ++ before and after
@@ -116,8 +116,8 @@ var gameLoop1 = function () {
   } else {
       console.log("The computer found you!!!!");
       ctx1.fillStyle = "Red";
-      xStart = cx*sideInt1;
-      yStart = cy*sideInt1;
+      xStart = (cx-1)*sideInt1;
+      yStart = (cy-1)*sideInt1;
       ctx1.fillRect(xStart,yStart,sideInt1,sideInt1);
       clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
       messageString = "<p>The computer found you at (" + cx + ", " + cy + ") in " + guesses + " guesses.</p>";
