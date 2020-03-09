@@ -163,7 +163,7 @@ var gameLoop = function () {
 	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);
   
         clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
-	var messageString = "<p>The computer found you at (" + computerGuess[0] + ", " + computerGuess[1] + ") in " + guesses " guesses.</p>";
+	var messageString = "<p>The computer found you at (" + computerGuess[0] + ", " + computerGuess[1] + ") in " + guesses + " guesses.</p>";
 	$("#rightSide).append(messageString);
 	
   }
