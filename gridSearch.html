@@ -83,12 +83,15 @@ for (var b = sideInt2; b<side2; b = b+sideInt2) {
 var playerX;
 var playerY;
 var playerLocation = []; 
+
+var wait2play = true;
 	
 $("#playerxy").click(function () {
 	var playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
         var playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
         var playerLocation = [playerX, playerY];
 	console.log(playerLocation);
+	wait2play=false;
 });
 	
 	
@@ -178,8 +181,9 @@ var gameLoop = function () {
 	
 	}
 
-    setTimeout(found, 1000);	//prevents alert from popping up too early
-
+    if (!wait2play) {    
+      setTimeout(found, 1000);	//prevents alert from popping up too early
+    }
 	
   }
   
