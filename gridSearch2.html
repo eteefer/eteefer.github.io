@@ -41,7 +41,6 @@
 	
 <script>
 /*
-
                  DRAW GRID1
 				 
 */
@@ -61,7 +60,6 @@ for (var a = sideInt1; a<side1; a = a+sideInt1) {
 }
 			      
 /*
-
                  DRAW GRID2
 				 
 */
@@ -98,6 +96,7 @@ var messageString;
 var done = false;
 	
 ctx1.fillStyle = "Blue";
+ctx2.fillStyle = "Blue";
 	
 console.log("Your location is at: " + playerX + ", " + playerY + ".\n\n");
 
@@ -123,16 +122,20 @@ var gameLoop1 = function () {
       clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
       messageString = "<p>The computer found you at (" + cx + ", " + cy + ") in " + guesses + " guesses.</p>";
       $("#leftSide").append(messageString);
+	  computerGuess = [];
+      guesses = 0; //initialize guesses at 0
+      xStart = 0;
+      yStart = 0;
       intervalId = setInterval(gameLoop2, 200);
+	  
+
   }
 }	
 	
 /* 
-
     THIS CHUNK OF CODE SETS UP A LARGE ARRAY 
     CONTAINING ALL THE COORDINATES ON THE GRID 
     FOR THE COMPUTER TO CHOOSE FROM 
-
 */
 
 var largeArray = []; //set to empty array to be filled
@@ -154,26 +157,19 @@ for (var i=1;i<11;i++) {  //we will use this for the x coordinates on grid, reme
 
 
 /* 
-
    THESE INITIALIZATIONS NEED TO HAPPEN OUTSIDE OF THE MAIN GAME LOOP 
    
 */
 
-computerGuess = [];
-guesses = 0; //initialize guesses at 0
 
 
 
 /* 
-
    THE MAIN GAME LOOP STARTS HERE AND RUNS UNTIL THE COMPUTER GUESSES BOTH COORDINATES CORRECTLY 
    
 */
 
-ctx2.fillStyle = "Blue";
 
-xStart = 0;
-yStart = 0;
 
 var gameLoop2 = function () {
 
@@ -213,12 +209,11 @@ var gameLoop2 = function () {
 
 
 /* 
-
    FINAL CODE TO RUN WHEN COMPUTER FINDS THE PLAYER 
    
 */
 $("#playerxy").click(function () {
-	$("playerxy").off("click");
+	$(this).off("click");
 	playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
         playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
         playerLocation = [playerX, playerY];
