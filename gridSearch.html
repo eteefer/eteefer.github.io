@@ -41,42 +41,42 @@
 	
 /*
 
-                 DRAW THE GRID1
+                 DRAW GRID1
 				 
 */
 
-var grid  = document.getElementById("gridDumb");
-var side = grid.width;
-var sideInt = side/10;
-var ctx = grid.getContext("2d");
-ctx.strokeRect(0,0,side,side);
-for (var a = sideInt; a<side; a = a+sideInt) {  
-   ctx.beginPath();
-   ctx.moveTo(a,0);
-   ctx.lineTo(a, side);
-   ctx.moveTo(0, a);
-   ctx.lineTo(side, a);
-   ctx.stroke();
+var grid1  = document.getElementById("gridDumb");
+var side = grid1.width;
+var sideInt1 = side1/10;
+var ctx1 = grid1.getContext("2d");
+ctx.strokeRect(0,0,side1,side1);
+for (var a = sideInt1; a<side1; a = a+sideInt1) {  
+   ctx1.beginPath();
+   ctx1.moveTo(a,0);
+   ctx1.lineTo(a, side);
+   ctx1.moveTo(0, a);
+   ctx1.lineTo(side, a);
+   ctx1.stroke();
 }
 			      
 /*
 
-                 DRAW THE GRID2
+                 DRAW GRID2
 				 
 */
 
-var grid  = document.getElementById("gridSmart");
-var side = grid.width;
-var sideInt = side/10;
-var ctx = grid.getContext("2d");
-ctx.strokeRect(0,0,side,side);
-for (var a = sideInt; a<side; a = a+sideInt) {  
-   ctx.beginPath();
-   ctx.moveTo(a,0);
-   ctx.lineTo(a, side);
-   ctx.moveTo(0, a);
-   ctx.lineTo(side, a);
-   ctx.stroke();
+var grid2  = document.getElementById("gridSmart");
+var side2 = grid2.width;
+var sideInt2 = side2/10;
+var ctx2 = grid2.getContext("2d");
+ctx2.strokeRect(0,0,sid2e,side2);
+for (var b = sideInt; b<side; b = b+sideInt) {  
+   ctx2.beginPath();
+   ctx2.moveTo(a,0);
+   ctx2.lineTo(a, side);
+   ctx2.moveTo(0, a);
+   ctx2.lineTo(side, a);
+   ctx2.stroke();
 }
 </body>
 </html>
