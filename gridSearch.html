@@ -215,10 +215,16 @@ $("#playerxy").click(function () {
 	$(this).off("click");
 	playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
 	    while (!(choices.includes(playerX))) {
+		  if (playerX === null) {
+			return;
+		  }
 		  playerX = prompt("Pick a valid x-coordinate from 1-10");
 		}
         playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
 		while (!(choices.includes(playerY))) {
+		  if (playerY === null) {
+		    return;
+		  }
 		  playerY = prompt("Pick a valid y-coordinate from 1-10");
 		}
         playerLocation = [playerX, playerY];
