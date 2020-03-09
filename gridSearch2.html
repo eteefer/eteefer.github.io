@@ -33,6 +33,9 @@
   <p class = "description">Computer keeps track of its guesses.</p>
   <canvas id="gridSmart" width = "320" height = "320"></canvas>
 </div>
+<div>
+<button onClick="window.location.reload();" style="text-align: center">Start Over</button>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -98,8 +101,6 @@ var done = false;
 	
 ctx1.fillStyle = "Blue";
 ctx2.fillStyle = "Blue";
-	
-console.log("Your location is at: " + playerX + ", " + playerY + ".\n\n");
 
 /* 
    THE MAIN GAME LOOP 21 STARTS HERE AND RUNS UNTIL THE COMPUTER GUESSES BOTH COORDINATES CORRECTLY 
