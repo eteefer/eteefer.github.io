@@ -80,11 +80,127 @@ for (var b = sideInt2; b<side2; b = b+sideInt2) {
    ctx2.stroke();
 }
 
+var playerX;
+var playerY;
+var playerLocation = []; 
+	
 $("#playerxy").click(function () {
 	var playerX = prompt("Pick an x-coordinate from 1-10");  //I’m hiding at x-coordinate btwn 1 - 10
         var playerY = prompt("Pick a y-coordinate from 1-10");  //I’m hiding at a y-coordinate btwn 1 - 10
         var playerLocation = [playerX, playerY];
 	console.log(playerLocation);
+});
+	
+	
+	/* 
+
+    THIS CHUNK OF CODE SETS UP A LARGE ARRAY 
+    CONTAINING ALL THE COORDINATES ON THE GRID 
+    FOR THE COMPUTER TO CHOOSE FROM 
+
+*/
+
+var largeArray = []; //set to empty array to be filled
+var tempArray = [];  //set to empty array to be filled
+var largeArrayIndexer = 0;  //need this initialized at 0 outside of loops
+
+for (var h=0;h<100;h++) {  //filling largeArray with 100 elements, each element containing an empty array
+  largeArray[h] = [];
+}
+
+for (var i=1;i<11;i++) {  //we will use this for the x coordinates on grid, remember grid uses values 1-10
+  for (var j=1;j<11;j++) { //will run through all y values for a particular x value on the grid before bumping up to the next x value
+     tempArray = [i,j];  //contains a valid coordinate on the grid
+     largeArray[largeArrayIndexer] = tempArray;  //insert an a coordinate as a small array as an element into largeArray
+     largeArrayIndexer++;  //this will increment 100 times, but we won't use the very last value
+  }
+}
+
+
+
+/* 
+
+   THESE INITIALIZATIONS NEED TO HAPPEN OUTSIDE OF THE MAIN GAME LOOP 
+   
+*/
+
+computerGuess = [];
+var guesses = 0; //initialize guesses at 0
+
+
+
+/* 
+
+   THE MAIN GAME LOOP STARTS HERE AND RUNS UNTIL THE COMPUTER GUESSES BOTH COORDINATES CORRECTLY 
+   
+*/
+
+ctx2.fillStyle = "Blue";
+
+var xStart = 0;
+var yStart = 0;
+
+var gameLoop = function () {
+
+  randomIndex = Math.floor(Math.random() * largeArray.length)
+  computerGuess = largeArray[randomIndex];
+  
+  guesses++;
+  
+  if (playerLocation[0] != computerGuess[0] || playerLocation[1] != computerGuess[1]) {
+  
+    console.log("Number of guesses: " + guesses);
+    console.log("The computer guesses: " + computerGuess[0] + ", " + computerGuess[1] + ".\n\n");
+    delete largeArray[randomIndex];  //this large array element will now be set to undefined, able to be spliced
+	largeArray.splice(randomIndex,1);  //very similar to .slice() for strings, but .splice() is for arrays
+	xStart = (computerGuess[0]-1)*sideInt2;
+	yStart = (computerGuess[1]-1)*sideInt2;
+	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);
+	
+	
+  }  else {
+    console.log("Number of guesses: " + guesses);
+    console.log("The computer guesses: " + computerGuess[0] + ", " + computerGuess[1] + ".\n\n");
+	
+	ctx2.fillStyle = "Red";
+	xStart = (computerGuess[0]-1)*sideInt2;
+	yStart = (computerGuess[1]-1)*sideInt2;
+	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);
+  
+    clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
+	
+	
+	var found = function () {
+	
+	alert("\nThe computer found you at location: " + computerGuess[0] + ", " + computerGuess[1] + "!!!\n\nThe computer took " + 
+	guesses + " guesses to find you!!!!");
+   
+	
+	}
+
+    setTimeout(found, 1000);	//prevents alert from popping up too early
+
+	
+  }
+  
+   //the if below is extra code to help protect against an infinite loop, left here to show you
+  if (guesses >= 200) {  //have to break at a value greater than 100 to see the loop isn't stopping correctly
+                        
+        clearInterval(intervalId);           
+	
+  }
+  
+}  //Game loop ends here
+
+
+/* 
+
+   FINAL CODE TO RUN WHEN COMPUTER FINDS THE PLAYER 
+   
+*/
+
+var intervalId = setInterval(gameLoop, 500);
+
 });
 	</script>
 </body>
