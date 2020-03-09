@@ -180,10 +180,6 @@ var gameLoop = function () {
    
 	
 	}
-
-    if (!wait2play) {    
-      setTimeout(found, 1000);	//prevents alert from popping up too early
-    }
 	
   }
   
@@ -202,8 +198,9 @@ var gameLoop = function () {
    FINAL CODE TO RUN WHEN COMPUTER FINDS THE PLAYER 
    
 */
-
+if (!wait2play) {
 var intervalId = setInterval(gameLoop, 500);
+};
 	
 </script>
 </body>
