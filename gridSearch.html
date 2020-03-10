@@ -224,21 +224,16 @@ var gameLoop2 = function () {
   
   guesses++;
   
+  console.log("Number of guesses: " + guesses);
+  console.log("The computer guesses: " + computerGuess[0] + ", " + computerGuess[1] + ".\n\n");
+	
   if (playerLocation[0] != computerGuess[0] || playerLocation[1] != computerGuess[1]) {
-  
-    console.log("Number of guesses: " + guesses);
-    console.log("The computer guesses: " + computerGuess[0] + ", " + computerGuess[1] + ".\n\n");
     delete largeArray[randomIndex];  //this large array element will now be set to undefined, able to be spliced
 	largeArray.splice(randomIndex,1);  //very similar to .slice() for strings, but .splice() is for arrays
 	xStart = (computerGuess[0]-1)*sideInt2;
 	yStart = (computerGuess[1]-1)*sideInt2;
-	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);
-	
-	
+	ctx2.fillRect(xStart,yStart,sideInt2,sideInt2);	
   }  else {
-    console.log("Number of guesses: " + guesses);
-    console.log("The computer guesses: " + computerGuess[0] + ", " + computerGuess[1] + ".\n\n");
-	
 	ctx2.fillStyle = "Red";
 	xStart = (computerGuess[0]-1)*sideInt2;
 	yStart = (computerGuess[1]-1)*sideInt2;
@@ -247,7 +242,8 @@ var gameLoop2 = function () {
         clearInterval(intervalId);  //The computer guessed both coordinates correctly, time to leave the main game loop!
 	messageString = "<p>The computer found you at (" + computerGuess[0] + ", " + computerGuess[1] + ") in " + guesses + " guesses.</p>";
 	$("#rightSide").append(messageString);
-	
+	  
+	console.log("The computer found you at (" + computerGuess[0] + ", " + computerGuess[1] + ")!");
   }
   
   
