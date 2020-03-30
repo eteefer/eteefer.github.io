@@ -91,8 +91,26 @@ The computer's guesses may be viewed by opening up the console.  (Ctrl-Shift-J o
 </script>
 	
 <script>
+
 /*
-                 DRAW GRID1
+
+              Function to draw grid
+			  
+*/
+var drawGrid = function(side, sideInt) { 
+  this.strokeRect(0,0,side,side);
+  for (var a = sideInt; a<side; a = a+sideInt) {  
+     this.beginPath();
+     this.moveTo(a,0);
+     this.lineTo(a, side);
+     this.moveTo(0, a);
+     this.lineTo(side, a);
+     this.stroke();
+  }
+}
+
+/*
+                 Setup GRID1
 				 
 */
 
@@ -100,18 +118,13 @@ var grid1  = document.getElementById("gridDumb");
 var side1 = grid1.width;
 var sideInt1 = side1/10;
 var ctx1 = grid1.getContext("2d");
-ctx1.strokeRect(0,0,side1,side1);
-for (var a = sideInt1; a<side1; a = a+sideInt1) {  
-   ctx1.beginPath();
-   ctx1.moveTo(a,0);
-   ctx1.lineTo(a, side1);
-   ctx1.moveTo(0, a);
-   ctx1.lineTo(side1, a);
-   ctx1.stroke();
-}
+ctx1.drawGrid = drawGrid;  //creates new method for ctx1 object
+ctx1.drawGrid(side1,sideInt1)
+
+
 			      
 /*
-                 DRAW GRID2
+                 Setup GRID2
 				 
 */
 
@@ -119,15 +132,14 @@ var grid2  = document.getElementById("gridSmart");
 var side2 = grid2.width;
 var sideInt2 = side2/10;
 var ctx2 = grid2.getContext("2d");
-ctx2.strokeRect(0,0,side2,side2);
-for (var b = sideInt2; b<side2; b = b+sideInt2) {  
-   ctx2.beginPath();
-   ctx2.moveTo(b,0);
-   ctx2.lineTo(b, side2);
-   ctx2.moveTo(0, b);
-   ctx2.lineTo(side2, b);
-   ctx2.stroke();
-}
+ctx2.drawGrid = drawGrid;  //creates new method for ctx2 object
+ctx2.drawGrid(side2,sideInt2)
+
+/*
+
+    Define acceptible guesses and initialize variables
+
+*/
 
 var choices = ["1","2","3","4","5","6","7","8","9","10"];
 var playerX;
@@ -151,7 +163,7 @@ ctx1.fillStyle = "Blue";
 ctx2.fillStyle = "Blue";
 
 /* 
-   THE MAIN GAME LOOP 21 STARTS HERE AND RUNS UNTIL THE COMPUTER GUESSES BOTH COORDINATES CORRECTLY 
+   THE MAIN GAME LOOP 1 STARTS HERE AND RUNS UNTIL THE COMPUTER GUESSES BOTH COORDINATES CORRECTLY 
    
 */
 
@@ -251,7 +263,6 @@ var gameLoop2 = function () {
 
 
 /* 
-
    THE CLICK
    
 */
