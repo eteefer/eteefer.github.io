@@ -171,15 +171,14 @@ var gameLoop1 = function () {
   cx = Math.floor(Math.random() * 10) + 1;  //computer generates x guess from 1 to 10
   cy = Math.floor(Math.random() * 10) + 1;  //computer generates y guess from 1 to 10
 
-  console.log("Number of guesses: " + guesses);
+  console.log("Number of guesses: " + ++guesses);
   console.log("The computer guesses: " + cx + ", " + cy + ".\n\n");
 	
   if (cx != playerX || cy != playerY) { //OR, only one has to be true to be true	
     xStart = (cx-1)*sideInt1;
     yStart = (cy-1)*sideInt1;
     ctx1.fillRect(xStart,yStart,sideInt1,sideInt1);
-  
-    ++guesses; //guess made..increment guesses, could inc in console.log, show ++ before and after
+ 
   } else {
       console.log("The computer found you at (" + cx + ", " + cy + ")!");
       ctx1.fillStyle = "Red";
