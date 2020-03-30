@@ -171,7 +171,9 @@ var gameLoop1 = function () {
   cx = Math.floor(Math.random() * 10) + 1;  //computer generates x guess from 1 to 10
   cy = Math.floor(Math.random() * 10) + 1;  //computer generates y guess from 1 to 10
 
-  console.log("Number of guesses: " + ++guesses);
+  guesses++;
+	
+  console.log("Number of guesses: " + guesses);
   console.log("The computer guesses: " + cx + ", " + cy + ".\n\n");
 	
   if (cx != playerX || cy != playerY) { //OR, only one has to be true to be true	
