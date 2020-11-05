@@ -51,7 +51,7 @@
 	ball = new Ball(200, 200);
 
 	var toggler = 1;
-	ballsBouncing = setInterval(function () {
+	ballBouncing = setInterval(function () {
 		  
              if (ball.y >= 500 && ball.toggler === 1) {
 		   ball.toggler = -1;
@@ -63,7 +63,7 @@
 		 }
 		  
 	     if (ball.y < 200 && ball.toggler === 1) {
-		   ball.clearInterval;
+		   ball.clearInterval(ballBouncing);
 		 }
 		 
 	     else {
