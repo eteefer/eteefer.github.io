@@ -50,13 +50,16 @@
 	var ballx = 206;
 	var bally = 190;
 	ball = new Ball(ballx, bally);
+	  
+	var accel = .2;
 
 	var toggler = 1;
 	ballBouncing = setInterval(function () {
 		  
              if (ball.y >= 500 && ball.toggler === 1) {
+		   accel -= .2;
 		   ball.toggler = -1;  //ball needs to go up now
-		   ball.moveUp(5);
+		   ball.moveUp(accel);
 		 }
 		  
 	     else if (ball.y <= bally && ball.toggler === -1) {
@@ -64,11 +67,13 @@
 		 }
 		
 	     else if (ball.y <= 500 && ball.toggler === -1) {
-		   ball.moveUp(5);  //ball on its way up
+		   accel -= .2;
+		   ball.moveUp(accel);  //ball on its way up
 		 }
 		 
 	     else {
-		   ball.moveDown(5);
+		   accel += .2;
+		   ball.moveDown(accel);
 		 }
 	   
 	   
