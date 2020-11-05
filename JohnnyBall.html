@@ -54,20 +54,19 @@
 	ballBouncing = setInterval(function () {
 		  
              if (ball.y >= 500 && ball.toggler === 1) {
-		   ball.toggler = -1;
+		   ball.toggler = -1;  //ball needs to go up now
 		   ball.moveUp(5);
 		 }
 		  
-	     else if (ball.y <= 500 && ball.y >= 200 && ball.toggler === -1) {
-		   ball.moveUp(5);
+	     else if (ball.y <= 200 && ball.toggler === -1) {
+		   ball.clearInterval(ballBouncing);  //ball needs to stop at Johnny
 		 }
-		  
-	     else if (ball.y < 200 && ball.toggler === 1) {
-		   ball.clearInterval(ballBouncing);
+		
+	     else if (ball.y <= 500 && ball.toggler === -1) {
+		   ball.moveUp(5);  //ball on its way up
 		 }
 		 
 	     else {
-		   ball.toggler = 1;
 		   ball.moveDown(5);
 		 }
 	   
