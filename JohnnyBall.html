@@ -47,8 +47,9 @@
         top: this.y
       });
 	 }
-	  
-	ball = new Ball(200, 200);
+	var ballx = 225;
+	var bally = 150;
+	ball = new Ball(ballx, bally);
 
 	var toggler = 1;
 	ballBouncing = setInterval(function () {
@@ -58,7 +59,7 @@
 		   ball.moveUp(5);
 		 }
 		  
-	     else if (ball.y <= 200 && ball.toggler === -1) {
+	     else if (ball.y <= bally && ball.toggler === -1) {
 		   clearInterval(ballBouncing);  //ball needs to stop at Johnny
 		 }
 		
