@@ -52,24 +52,25 @@
 
 	var toggler = 1;
 	ballsBouncing = setInterval(function () {
-	  for (var i = 0; i < ball.length; i++) {
-	     if (ball.y < 200 && ball[i].toggler === 1) {
-		   ball.clearInterval;
-		 }
-		 
-		 else if (ball[i].y >= 500 && ball[i].toggler === 1) {
+		  
+             if (ball.y >= 500 && ball.toggler === 1) {
 		   ball.toggler = -1;
 		   ball.moveUp(5);
 		 }
-		 
-		 else if (ball[i].y <= 500 && ball[i].y >= 200 && ball[i].toggler === -1) {
+		  
+	     else if (ball.y <= 500 && ball.y >= 200 && ball.toggler === -1) {
 		   ball.moveUp(5);
 		 }
-		 else {
+		  
+	     if (ball.y < 200 && ball.toggler === 1) {
+		   ball.clearInterval;
+		 }
+		 
+	     else {
 		   ball.toggler = 1;
 		   ball.moveDown(5);
 		 }
-		}    
+	   
 	   
 	  
 	  }, 20);
@@ -81,7 +82,7 @@
 	<body>
 	
         <div style="text-align: center">
-        <h2 id="heading">Johhny!</h2>
+        <h2 id="heading">J hny!</h2>
 	
 	</body>
 	</html>
