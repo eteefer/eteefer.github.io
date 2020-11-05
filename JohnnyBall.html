@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basketball</title>
+  <link href="./jsforkidsgames.css" type="text/css" rel="stylesheet"/>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous">
+  </script>
+  <script>
+  $(document).ready(function() {
+    var Ball = function (x,y) {
+	  this.x = x;
+	  this.y = y;
+	  this.toggler = 1;
+	  this.draw();
+	}
+	
+	Ball.prototype.draw = function () {
+	  var ballHtml = '<img src ="./test%20ball.png" width = "100">';
+	
+	  this.ballElement = $(ballHtml);
+	 
+	  this.ballElement.css({
+	    position: "absolute",
+		left: this.x,
+		top: this.y
+	  });
+	  
+	  $("body").append(this.ballElement);
+	 };
+	 
+	 Ball.prototype.moveDown = function (distance) {
+	   this.y += distance;
+	   
+	   this.ballElement.css({
+        left: this.x,
+        top: this.y
+      });
+	 }
+	 
+	 Ball.prototype.moveUp = function (distance) {
+	   this.y -= distance;
+	   
+	   this.ballElement.css({
+        left: this.x,
+        top: this.y
+      });
+	 }
+	  
+	ball = new Ball(200, 200);
+
+	var toggler = 1;
+	ballsBouncing = setInterval(function () {
+	  for (var i = 0; i < ball.length; i++) {
+	     if (ball.y < 200 && ball[i].toggler === 1) {
+		   ball.clearInterval;
+		 }
+		 
+		 else if (ball[i].y >= 500 && ball[i].toggler === 1) {
+		   ball.toggler = -1;
+		   ball.moveUp(5);
+		 }
+		 
+		 else if (ball[i].y <= 500 && ball[i].y >= 200 && ball[i].toggler === -1) {
+		   ball.moveUp(5);
+		 }
+		 else {
+		   ball.toggler = 1;
+		   ball.moveDown(5);
+		 }
+		}    
+	   
+	  
+	  }, 20);
+	 
+	 }
+	);
+	</script>
+	</head>
+	<body>
+	
+        <div style="text-align: center">
+        <h2 id="heading">Johhny!</h2>
+	
+	</body>
+	</html>
