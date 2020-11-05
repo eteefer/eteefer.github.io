@@ -58,8 +58,10 @@
 		  
              if (ball.y >= 500 && ball.toggler === 1) {
 		   accel -= .2;
-		   ball.toggler = -1;  //ball needs to go up now
 		   ball.moveUp(accel);
+		   if (ball.y < 500) {
+		      ball.toggler = -1;  //ball needs to go up now
+		   }
 		 }
 		  
 	     else if (ball.y <= bally && ball.toggler === -1) {
