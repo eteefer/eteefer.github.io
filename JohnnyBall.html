@@ -51,13 +51,13 @@
 	var bally = 190;
 	var ball = new Ball(ballx, 190);
 	  
-	var accel = 0;
+	var acc = 0;
 
 	//var toggler = 1;
 	ballBouncingDown = setInterval(function () {
 		  
-             accel = accel + 1;
-	     ball.moveDown(accel);
+             acc = acc + 1;
+	     ball.moveDown(acc);
 	     if (ball.y >= 500) {
 		 clearInterval(ballBouncingDown);
 	     }
@@ -66,8 +66,8 @@
 	  }, 20);
 	  
 	ballBouncingUp = setInterval(function () {
-		accel = accel - 1;
-		ball.moveUp(accel);
+		acc = acc - 1;
+		ball.moveUp(acc);
 		if (ball.y <= 190) {
 			clearInterval(ballBouncingUp);
 		}
