@@ -58,7 +58,7 @@
 		  
              accel = accel + 1;
 	     ball.moveDown(accel);
-	     if (ball.y >== 500) {
+	     if (ball.y >= 500) {
 		 clearInterval(ballBouncingDown);
 	     }
 	   
@@ -68,7 +68,7 @@
 	ballBouncingUp = setInterval(function () {
 		accel = accel - 1;
 		ball.moveUp(accel);
-		if (ball.y <== 190) {
+		if (ball.y <= 190) {
 			clearInterval(ballBouncingUp);
 		}
 		
