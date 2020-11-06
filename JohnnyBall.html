@@ -61,17 +61,10 @@
 	     ball.moveDown(acc);
 	     if (ball.y >= 500) {
 		 console.log(acc);
-		  up = true;
 		 clearInterval(ballBouncingDown);
-		
-	     }
-	   
-	  
-	  }, 20);
-	  
-	  
-	if (up === true) {
-	ballBouncingUp = setInterval(function () {
+		 up = true;
+		 if (up === true) {
+	        ballBouncingUp = setInterval(function () {
 		acc = acc - 1;
 		ball.moveUp(acc);
 		if (ball.y <= 190) {
@@ -81,6 +74,16 @@
 		
 	}, 20);
 	}
+			 
+			 
+			 
+	     }
+	     
+	  
+	  }, 20);
+	  
+	  
+	
 	 
 	 }
 	);
