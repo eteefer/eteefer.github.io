@@ -74,7 +74,7 @@
 		   ball.moveUp(accel);  //ball on its way up
 		 }
 		 
-	     else {
+	     else if (ball.toggler != -1) {
 		   accel += .2;
 		   ball.moveDown(accel);
 		 }
