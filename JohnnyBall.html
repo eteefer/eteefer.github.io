@@ -54,7 +54,7 @@
 	var acc = 0;
 
 	
-	ballBouncingDown = setInterval(function () {
+	var ballBouncingDown = setInterval(function () {
 		  
              acc = acc + 1;
 	     ball.moveDown(acc);
@@ -68,10 +68,11 @@
 	  
 	  
 	  
-	ballBouncingUp = setInterval(function () {
+	var ballBouncingUp = setInterval(function () {
 		acc = acc - 1;
 		ball.moveUp(acc);
 		if (ball.y <= 190) {
+			console.log(acc);
 			clearInterval(ballBouncingUp);
 		}
 		
