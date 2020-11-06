@@ -56,23 +56,23 @@
 	//var toggler = 1;
 	ballBouncingDown = setInterval(function () {
 		  
-             accel += .2;
+             accel += 1;
 	     ball.moveDown(accel);
 	     if (ball.y >= 500) {
 		 clearInterval(ballBouncingDown);
 	     }
 	   
 	  
-	  }, 10);
+	  }, 20);
 	  
 	ballBouncingUp = setInterval(function () {
-		accel -= .2;
+		accel -= 1;
 		ball.moveUp(accel);
 		if (ball.y <= 190) {
 			clearInterval(ballBouncingUp);
 		}
 		
-	}, 10);
+	}, 20);
 	  console.log(ball.y);
 	  console.log(bally);
 	 
