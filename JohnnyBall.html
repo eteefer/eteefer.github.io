@@ -53,19 +53,20 @@
 	  
 	var acc = 0;
 
-	//var toggler = 1;
+	
 	ballBouncingDown = setInterval(function () {
 		  
              acc = acc + 1;
 	     ball.moveDown(acc);
 	     if (ball.y >= 500) {
+		 console.log(acc);
 		 clearInterval(ballBouncingDown);
 	     }
 	   
 	  
 	  }, 20);
 	  
-	  console.log(acc);
+	  
 	  
 	ballBouncingUp = setInterval(function () {
 		acc = acc - 1;
@@ -75,8 +76,7 @@
 		}
 		
 	}, 20);
-	  console.log(ball.y);
-	  console.log(bally);
+	 
 	 
 	 }
 	);
