@@ -53,23 +53,23 @@
 	  
 	var accel = .2;
 
-	var toggler = 1;
+	//var toggler = 1;
 	ballBouncing = setInterval(function () {
 		  
              if (ball.y >= 500 && ball.toggler === 1) {
 		   accel -= .2;
 		   ball.moveUp(accel);
 		  
-		   toggler = -1;  //ball needs to go up now
+		   ball.toggler = -1;  //ball needs to go up now
 		   
 		 }
 		  
-	     else if (ball.y <= bally && toggler === -1) {
+	     else if (ball.y <= bally && ball.toggler === -1) {
 		   console.log("This isn't executing.");
 		   clearInterval(ballBouncing);  //ball needs to stop at Johnny
 		 }
 		
-	     else if (ball.y <= 500 && toggler === -1) {
+	     else if (ball.y <= 500 && ball.toggler === -1) {
 		   accel -= .2;
 		   ball.moveUp(accel);  //ball on its way up
 		 }
