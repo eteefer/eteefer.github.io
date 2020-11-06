@@ -53,22 +53,24 @@
 	  
 	var acc = 0;
 
-	
-	var ballBouncingDown = setInterval(function () {
+	var up = false;
+	  
+	ballBouncingDown = setInterval(function () {
 		  
              acc = acc + 1;
 	     ball.moveDown(acc);
 	     if (ball.y >= 500) {
 		 console.log(acc);
 		 clearInterval(ballBouncingDown);
+		 up = true;
 	     }
 	   
 	  
 	  }, 20);
 	  
 	  
-	  
-	var ballBouncingUp = setInterval(function () {
+	if (up === true) {
+	ballBouncingUp = setInterval(function () {
 		acc = acc - 1;
 		ball.moveUp(acc);
 		if (ball.y <= 190) {
@@ -77,7 +79,7 @@
 		}
 		
 	}, 20);
-	 
+	}
 	 
 	 }
 	);
