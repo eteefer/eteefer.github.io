@@ -54,34 +54,25 @@
 	var accel = 0;
 
 	//var toggler = 1;
-	ballBouncing = setInterval(function () {
+	ballBouncingDown = setInterval(function () {
 		  
-             if (ball.y >= 500 && ball.toggler === 1) {
-		   accel -= .2;
-		   ball.moveUp(accel);
-		  
-		   ball.toggler = -1;  //ball needs to go up now
-		   
-		 }
-		  
-	     else if (ball.y <= bally && ball.toggler === -1) {
-		   console.log("This isn't executing.");
-		   clearInterval(ballBouncing);  //ball needs to stop at Johnny
-		 }
-		
-	     else if (ball.y <= 500 && ball.toggler === -1) {
-		   accel -= .2;
-		   ball.moveUp(accel);  //ball on its way up
-		 }
-		 
-	     else if (ball.toggler === 1) {
-		   accel += .2;
-		   ball.moveDown(accel);
-		 }
-	   
+             accel += .2;
+	     ball.moveDown(accel);
+	     if (ball.y >= 500) {
+		 clearInterval(ballBouncingDown);
+	     }
 	   
 	  
 	  }, 10);
+	  
+	ballBouncingUp = setInterval(function () {
+		accel -= .2;
+		ball.moveUp(accel);
+		if (ball.y <= 190) {
+			clearInterval(ballBouncingUp);
+		}
+		
+	}, 10);
 	  console.log(ball.y);
 	  console.log(bally);
 	 
