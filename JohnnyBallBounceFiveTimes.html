@@ -59,6 +59,7 @@
              if (ball.y >= 500 && ball.toggler === 1) {
 		   ball.toggler = -1;  //ball needs to go up now
 		   ball.moveUp(5);
+		   counter++;
 		 }
 		  
 	     else if (ball.y <= bally /*&& ball.toggler === -1*/  && counter ===5) {
@@ -78,7 +79,7 @@
 		   ball.moveDown(5);
 		 }
 	     
-	     counter++;
+	     
 		console.log(counter);
 	   
 	  
