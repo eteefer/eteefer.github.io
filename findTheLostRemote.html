@@ -91,6 +91,18 @@
       x: randomNumber(width),  //x property will contain a number between 0 and (width-1)
       y: randomNumber(height)  //y property will contain a number between 0 and (height-1)
     };
+	    
+	    
+    //Math.random letter m
+    var keyActions = {
+	  77: "showMathRandom"  //added for learning purposes, when m hit math.random ex alerts
+    };
+	
+ $("body").keydown(function (event) {
+        if (keyActions[event.keyCode] === "showMathRandom") {
+	    alert("var randomNumber = function (lengthOfSide) {\nreturn Math.floor(Math.random() * lengthOfSide);\n};");
+	  }
+	});
 
     /* 
 	              Add a click handler to the img element with id of map,
