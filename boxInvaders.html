@@ -110,7 +110,7 @@ var Bullet = function () {
 
 Bullet.prototype.drawBullet = function () {
    ctx.beginPath();
-   ctx.moveTo(this.bx,this.by);
+   ctx.moveTo(this.bx,this.by-1);
    ctx.lineTo(this.bx,this.by);
    ctx.stroke();
 };
