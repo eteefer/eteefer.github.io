@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Christmas Hangman</title>
+</head>
+<body>
+    <h1>Christmas Hangman</h1>  <!--The JavaScript starts running before this element renders.  Won't see it till the end.-->
+    <script>
+    // Create an array of words
+    var wordBank = [
+      "CHRISTMAS",
+      "JESUS",
+      "ANGEL",
+      "STOCKING",
+	  "BETHLEHEM",
+	  "MANGER",
+	  "WREATH",
+	  "ORNAMENT",
+	  "SHEPHERD"
+    ];
+
+    //Select a random word from the word bank
+    var selectedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+
+    //Initialize an array containing blanks where the correctly guessed letters will go
+    var answerArray = [];
+    for (var i = 0; i < selectedWord.length; i++) {
+      answerArray[i] = "_";
+    }
+
+    var remainingLetters = selectedWord.length;  //remainingLetter here contains total number of characters of selectedWord
+    var guessesLeft = 20;  //the player has a total of 20 guesses to win
+	
+    // The main game loop
+    while (remainingLetters > 0 && guessesLeft > 0) {
+      // Show the player their progress
+      alert("You have " + guessesLeft + " guesses to guess this word.\n\n" + answerArray.join(" "));
+      // Get a guess from the player
+      var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+      if (guess === null) { //By hitting cancel the player has quit the game
+        break;
+      } else if (guess.length !== 1) {  //check to make sure player only typed a character and only one character
+        alert("Please enter a single letter.");
+      } else {
+        guessesLeft--;  //a legitimate enough guess was made, decrement guessesLeft
+        guess = guess.toUpperCase();  //the guess needs to be the same case as the selectedWord
+		
+        // Update the game state with the guess
+        for (var j = 0; j < selectedWord.length; j++) { //there may be more than one instance of the guess in selectedWord
+          if (selectedWord[j] === guess && answerArray[j] === "_") { //check selectedWord character by character & check for duplicate guess
+            answerArray[j] = guess;  //a blank is replaced by a correctly guessed letter
+            remainingLetters--;  //decrement remainingLetters since a character has replaced a blank
+          } 
+        }  //End of for loop
+      } //End of if else chain
+    
+    } //End of game loop
+
+    
+    //Display player result
+    if (guessesLeft > 0 && guess != null) {
+      alert(answerArray.join(" ") + "\n\nGood job!");
+    } else {
+      alert(answerArray.join(" ") + "\n\nToo bad! The answer was " + selectedWord);
+    }
+    </script>
+</body>
+</html>
