@@ -63,18 +63,14 @@
 	                           Initialize Variables
 	                                                                                  */
 																					  
-    var width = document.getElementById("map").width;
-    var height = document.getElementById("map").height;
+    var mapWidth = document.getElementById("map").width;
+    var mapHeight = document.getElementById("map").height;
     var clicks = 0;
-	
-    //check values for width and height in console to verify
-    console.log("This is the width: " + width + " pixels");  //see it in the console
-    console.log("This is the height: " + height + " pixels");  //see it in the console
 	
     // Initialize treasure variable as an object with random treasure location
     var treasure = {
-      x: randomNumber(width),  //x property will contain a number between 0 and (width-1)
-      y: randomNumber(height)  //y property will contain a number between 0 and (height-1)
+      x: randomNumber(mapWidth),  //x property will contain a number between 0 and (width-1)
+      y: randomNumber(mapHeight)  //y property will contain a number between 0 and (height-1)
     };
 
     /* 
