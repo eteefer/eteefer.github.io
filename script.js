@@ -46,5 +46,6 @@
 
       if (distance < 8) {
         alert("Found the remote in " + clicks + " clicks!");
+        distance = 0;
       }
     });
