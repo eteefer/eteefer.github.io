@@ -58,7 +58,7 @@
 
     
     //Display player result
-    if (guessesLeft > 0 && guess != null) {
+    if (answerArray.join("") === selectedWord) {
       alert(answerArray.join(" ") + "\n\nGood job!");
     } else {
       alert(answerArray.join(" ") + "\n\nToo bad! The answer was " + selectedWord);
