@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>Christmas Hangman</title>
+</head>
+
+<body>
+  <h1>Christmas Hangman</h1>  <!--The JavaScript starts running before this element renders.  Won't see it till the end.-->
+  <script>
+  // Create an array of words
+    var wordBank = [
+      "CHRISTMAS",
+      "JESUS",
+      "ANGEL",
+      "STOCKING",
+	  "BETHLEHEM",
+	  "MANGER",
+	  "WREATH",
+	  "ORNAMENT",
+	  "SHEPHERD"
+    ];
+	
+	//Select a random word from the word bank
+    var selectedWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+	
+	//Initialize an array containing blanks where the correctly guessed letters will go
+    var answerArray = [];
+    for (var i = 0; i < selectedWord.length; i++) {
+      answerArray[i] = "_";
+    }
+	
+	var remainingLetters = selectedWord.length;  //remainingLetter here contains total number of characters of selectedWord
+    var guessesLeft = 20;  //the player has a total of 20 guesses to win
+	
+	// The main game loop
+    while (remainingLetters > 0 && guessesLeft > 0) {
+      
+      alert("You have " + guessesLeft + " guesses to guess this word.\n\n" + answerArray.join(" "));
+      
+      var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+      if (guess === null) {
+        break;
+      } else if (guess.length !== 1) {
+        alert("Please enter a single letter.");
+      } else {
+        guessesLeft--;
+        guess = guess.toUpperCase();
+		
+        // Update the game state with the guess
+        for (var j = 0; j < selectedWord.length; j++) { 
+          if (selectedWord[j] === guess && answerArray[j] === "_") {
+            answerArray[j] = guess;
+            remainingLetters--;
+          } 
+        }  //End of for loop
+      } //End of if else chain
+    
+    } //End of game loop
+	
+	//Display player result
+    if (guessesLeft > 0 && guess != null) {
+      alert(answerArray.join(" ") + "\n\nGood job!");
+    } else {
+      alert(answerArray.join(" ") + "\n\nToo bad! The answer was " + selectedWord);
+    }
+  </script>
+
+</body>
+</html>
