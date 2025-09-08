@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+#greenMonster {
+	  visibility: hidden;
+}
+#div1 {
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<img id = "greenMonster" width = "40" height = "30" src="greenMonster.png" alt="The Green Monster"/>
+<div id ="div1">
+  
+<canvas id="canvas" width="400" height="400" style="border:1px solid #d3d3d3;">
+</canvas>
+
+<h3 id="message">Use left and right arrow keys to move and spacebar to shoot!</h3>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script>
+
+//flash message
+
+ for (var i=0;i<7;i++) {
+	 $("#message").fadeOut(300);
+	 $("#message").fadeIn(300);
+ }
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+ctx.font="60px Courier New";
+
+width= canvas.width
+height = canvas.height
+
+monstersLeft = 5;
+period = canvas.width/monstersLeft;
+monsters = [];
+
+var monsterImg = document.getElementById("greenMonster");
+
+var GreenMonster = function (x,y) {
+  this.img  = monsterImg;
+  this.x = x;
+  this.y = y;
+  this.xSpeed = 5;
+}
+
+GreenMonster.prototype.drawMonster = function () {
+  ctx.drawImage(this.img, this.x, this.y, 40, 30);
+}
+
+GreenMonster.prototype.move = function () {
+  this.x += this.xSpeed;
+}  
+	
+var checkSideToSide = function () {
+  for (var b=0;b<monstersLeft;b++) {
+    if (monsters[0] === undefined) {
+	  monsters.shift();
+	}
+	if (monsters[monsters.length-1] === undefined) {
+	  monsters.pop();
+	}
+	if (monsters.length === 0) {
+	  return true;
+	}	
+  }
+   
+  if (monsters[0].x <= 2) {
+    for (var h=0; h<monsters.length; h++) {
+	 if (monsters[h] != undefined) {
+	  monsters[h].xSpeed = 4;
+	  monsters[h].y += 4;
+	 }
+	}
+  }	
+  else if (monsters[monsters.length-1].x >= (width-40)) {
+	  for (var h=0;h<monsters.length;h++) {
+	   if (monsters[h] != undefined) {
+	    monsters[h].xSpeed = -4;
+		monsters[h].y += 4;
+	   }
+	  }
+	}
+	return false;
+};   
+  
+
+var Ship = function () {
+  this.x = canvas.width/2;
+  this.y = canvas.height-68;
+  this.xSpeed = 0;
+}
+
+Ship.prototype.drawShip = function () {
+  ctx.fillStyle = "#0000FF";
+  ctx.beginPath();
+  ctx.moveTo(this.x,this.y); //should be center tip of spaceship
+  ctx.lineTo(this.x-8,this.y+11);
+  ctx.lineTo(this.x-12,this.y);
+  ctx.lineTo(this.x-12,this.y+18);
+  ctx.lineTo(this.x+12,this.y+18);
+  ctx.lineTo(this.x+12,this.y);
+  ctx.lineTo(this.x+8,this.y+11);
+  //ctx.lineTo(this.x-12,this.y+18);
+  //ctx.lineTo(this.x+12,this.y+18);  24 across 18 down  
+  ctx.lineTo(this.x,this.y);
+  ctx.fill();
+  ctx.moveTo(this.x, this.y+8);
+  ctx.fillStyle = "#C0C0C0";
+  ctx.strokeStyle = "#F0F0F0"
+  ctx.beginPath();
+  ctx.lineTo(this.x-9, this.y+16);
+  ctx.lineTo(this.x+9,this.y+16);
+  ctx.lineTo(this.x, this.y+8);
+  ctx.fill();
+  ctx.strokeStyle = "#F0F0F0";
+  ctx.beginPath();
+  ctx.moveTo(this.x, this.y+8);
+  ctx.lineTo(this.x,this.y+16);
+  ctx.stroke();
+}
+
+Ship.prototype.move = function () {
+  this.x += this.xSpeed;
+  if (this.x < 6) {
+	this.x = 6;
+  } else if (this.x > canvas.width-6) {
+	this.x = canvas.width-6;
+  }
+}
+
+Ship.prototype.setDirection = function (direction) {
+  if (direction === "right") {
+	this.xSpeed = 5;
+  }  else if (direction === "left") {
+	this.xSpeed = -5;
+  }
+};
+
+var Bullet = function () {
+  this.bx = ship.x;
+  this.by = ship.y;
+}
+
+Bullet.prototype.drawBullet = function () {
+   ctx.strokeStyle = "#0000FF";
+   ctx.beginPath();
+   ctx.moveTo(this.bx,this.by);
+   ctx.lineTo(this.bx,this.by-1);
+   ctx.stroke();
+};
+
+var AlienBullet = function (x, y) {
+  this.bx = x;
+  this.by = y+8;
+}
+
+AlienBullet.prototype.drawBullet = function () {
+   ctx.strokeStyle = "#006622";
+   ctx.beginPath();
+   ctx.moveTo(this.bx,this.by);
+   ctx.lineTo(this.bx,this.by+2);
+   ctx.stroke()
+   //ctx.fillStyle = "Black";
+   //ctx.fillRect(this.bx,this.by,1,1);
+};
+
+var bulletNumber = 0;
+var bullet = [];
+var alienBullets = [];
+
+var shoot = function () {
+  bullet[bulletNumber] = new Bullet();
+  bulletNumber++;
+};
+
+var ship = new Ship()
+
+for (var i=0, j=0; i < monstersLeft; i++, j += period) {
+  monsters[i] = new GreenMonster(j, canvas.height/8)
+}
+
+var directionCodes = {
+  37: "left",
+  39: "right"
+};
+
+$("body").keydown(function (event) {
+  if (event.keyCode === 32) {
+     shoot();
+  }  else {
+       var direction = directionCodes[event.keyCode];
+       ship.setDirection(direction);
+  };
+});
+
+var ifLanded = function () {
+  if ((monsters[0] != undefined) && (monsters[0].y+30) >= (height-50)) {
+      return true;
+    } 
+  else {
+    return false;
+  }
+};
+
+
+var checkBulletHits = function () {
+  var monstersLeft = monsters.length;
+  for (var e=0;e<monstersLeft;e++) {
+    if(monsters[e] != undefined) {
+     for (var f=0;f<bullet.length;f++) {
+	  if ((monsters[e] != undefined) && (bullet[f].bx >= monsters[e].x  && bullet[f].bx <= ((monsters[e].x)+40)) //change
+	    && (bullet[f].by >= monsters[e].y && bullet[f].by-1 <= ((monsters[e].y)+30))) {
+		monsters.splice(e,1);
+	  }
+	 }
+	}
+  }
+};
+
+// Clear the interval and display Game Over text
+    var gameOverWin = function () {
+      clearInterval(intervalId);
+      ctx.fillStyle = "Black";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("You Win!", width / 2, height / 2 - 25);
+    };
+	
+// Clear the interval and display Game Over text
+var gameOverLose = function () {
+  clearInterval(intervalId);
+  ctx.fillStyle = "Black";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText("Game Over", width / 2, height / 2 - 25);
+};
+	
+	
+var checkDeathBlow = function (aB) {
+  if (aB.bx >= ship.x - 12 && aB.bx <= ship.x +12 && aB.by+2 >= ship.y  && aB.by <= ship.y+18-2) {
+    return true;
+  }
+
+  return false;
+}
+
+var explodeShip = function() {
+  var size = 8;
+  var intervalId = setInterval( function () {
+    ctx.beginPath();
+	ctx.arc(ship.x,ship.y + 9, size, 0, Math.PI*2, false);
+	ctx.fill();
+	if (size > 20) {
+	  clearInterval(intervalId);
+	}
+	size++;
+  },30)
+}
+
+var alienBulletTimer = 0;
+
+var intervalId = setInterval(function() {
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	ctx.fillStyle = "Brown";
+    ctx.fillRect(0,(height-50),width,height);
+	
+	ctx.lineWidth = 2;
+	ctx.strokeStyle = "#000000";
+    ctx.strokeRect(0,0,width,height);
+	
+	ship.move();
+	ship.drawShip();
+	
+	if (monsters.length === 0) {
+	  gameOverWin()
+	}
+	
+	for (var i=0; i < monstersLeft; i++) {
+	  if (monsters[i] != undefined) {
+        monsters[i].drawMonster();
+	  }
+    }
+	
+	if (ifLanded()) {
+       gameOverLose();
+    }
+	checkSideToSide();
+	
+	for (var k = 0; k<bulletNumber; k++) {
+      bullet[k].drawBullet();
+	  bullet[k].by += -4;
+	  checkBulletHits();
+    };
+	
+	
+	for (var g = 0; g<monstersLeft; g++) {
+	  if (monsters[g] != undefined) {
+		monsters[g].move()
+	  }
+    }
+	
+	alienBulletTimer = alienBulletTimer + 30;
+	
+    if (alienBulletTimer%1500===0) {
+	  var selectedIndex = Math.floor(Math.random() * monsters.length)
+      
+	  alienBullets.push(new AlienBullet(monsters[selectedIndex].x, monsters[selectedIndex].y));
+    }
+  
+    for (var k = 0; k<alienBullets.length;k++) {
+      alienBullets[k].by += 2;
+	  alienBullets[k].drawBullet();
+	  if (checkDeathBlow(alienBullets[k])) {
+	    explodeShip();
+	    gameOverLose();
+	  }
+    }
+	
+}, 50)
+		
+</script>
+
+</body>
+</html>
